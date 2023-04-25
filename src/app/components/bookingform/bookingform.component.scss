@@ -1,0 +1,13 @@
+.border {
+  border: 1px solid blue;
+  border-radius: 5px;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+.container {
+  height: 300px;
+  width: 100%;
+}
+.shadow {
+  box-shadow: 2px -2px 3px 3px rgba(0, 0, 126, 0.514);
+}
