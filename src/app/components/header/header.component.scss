@@ -57,14 +57,55 @@ $background-color-button-hover: rgba(146, 146, 240, 0.356);
   right: -100px;
   top: 10px;
   opacity: 0;
+  overflow: hidden;
   transition: all 1.5s ease;
 }
 .login-visibility-on {
   height: 200px;
   position: absolute;
-
+  overflow: hidden;
   right: 10%;
   top: 10px;
   opacity: 1;
   transition: all 1s ease;
+}
+.right {
+  position: absolute;
+  right: 20px;
+  height: 50px;
+  width: 50px;
+  text-align: center;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  box-shadow: 2px -2px 2px 2px rgb(96, 119, 148), 0 0 4px 4px rgb(228, 233, 236);
+  color: black;
+}
+
+.right:hover {
+  cursor: pointer;
+  height: 60x;
+  width: 60px;
+  text-align: center;
+  font-size: 1.2rem;
+  position: absolute;
+  right: 15px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  box-shadow: 2px -2px 2px 2px rgb(96, 119, 148), 0 0 4px 4px rgb(228, 233, 236);
+  color: black;
+}
+.right img {
+  height: 80%;
 }

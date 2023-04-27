@@ -3,6 +3,9 @@
   <div class="menu-button header-border" (click)="loginClick(loginPop)">
     Login
   </div>
+  <div class="header-border right">
+    <img [src]="userPic" alt="user" />
+  </div>
 </header>
 <div #loginPop class="login-visibility-off">
   <app-login-popup></app-login-popup>

@@ -1,5 +1,56 @@
 <div class="booking-frame">
-  <form class="border shadow container" action="">
-    Tu będzie formularz szukania lotu
+  <form [formGroup]="bookinginput" class="border shadow container" action="">
+    Origin:
+    <select type="text" formControlName="origin">
+      <option value="" disabled>Choose destination town</option>
+      <option value="cracow">Kraków</option>
+      <option value="breslau">Wrocław</option>
+      <option value="warsaw">Warszawa</option>
+      <option value="poznan">Poznań</option>
+      <option value="katowice">Katowice</option>
+      <option value="gdansk">Gdańsk</option>
+    </select>
+    <br />
+    Destination:
+    <select type="text" formControlName="destination">
+      <option value="" disabled>Choose destination town</option>
+      <option value="cracow">Kraków</option>
+      <option value="breslau">Wrocław</option>
+      <option value="warsaw">Warszawa</option>
+      <option value="poznan">Poznań</option>
+      <option value="katowice">Katowice</option>
+      <option value="gdansk">Gdańsk</option>
+    </select>
+    <br />
+    <span style="display: inline-block"> Passengers: </span>
+
+    <div style="display: inline">
+      Adults: <input type="number" name="" id="" formControlName="adults" />
+      <br />
+      Children (3 - 12 years):
+      <input type="number" formControlName="children" />
+      <br />
+      Newborn (0 - 3 years): <input type="number" formControlName="newborn" />
+      <br />
+      Take-off:
+      <input
+        type="date"
+        name=""
+        id=""
+        formControlName="takeoffDate"
+        [placeholder]="dzisiaj"
+      />
+      <br />
+      Landing:
+      <input
+        type="date"
+        name=""
+        id=""
+        formControlName="landingDate"
+        [placeholder]="dzisiaj"
+      />
+      <br />
+      <button (click)="flightSearch()" type="submit">Search</button>
+    </div>
   </form>
 </div>

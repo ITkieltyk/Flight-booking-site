@@ -6,8 +6,14 @@
 }
 .container {
   height: 300px;
-  width: 100%;
+  // width: 100%;
+  padding: 10px 10px;
 }
+select,
+input {
+  margin: 5px;
+}
+
 .shadow {
   box-shadow: 2px -2px 3px 3px rgba(0, 0, 126, 0.514);
 }
