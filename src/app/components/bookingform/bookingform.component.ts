@@ -1,19 +1,26 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnChanges, OnInit } from '@angular/core';
 import {
   FormBuilder,
   FormControl,
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { Router } from '@angular/router';
+import { BookingService } from 'src/app/booking.service';
 
 @Component({
   selector: 'app-bookingform',
   templateUrl: './bookingform.component.html',
   styleUrls: ['./bookingform.component.scss'],
 })
-export class BookingformComponent implements OnInit {
-  constructor(private readonly fb: FormBuilder) {}
+export class BookingformComponent implements OnInit, AfterViewInit {
+  constructor(
+    private readonly fb: FormBuilder,
+    private service: BookingService,
+    private readonly router: Router
+  ) {}
   dzisiaj: number = new Date().getDay();
+  airportList: string[] = [];
   bookinginput = new FormGroup({
     origin: new FormControl('', {
       validators: [Validators.required],
@@ -45,9 +52,14 @@ export class BookingformComponent implements OnInit {
     }),
   });
 
-  flightSearch() {}
+  flightSearch() {
+    console.log(this.bookinginput.value);
+    this.bookinginput.value.landingDate;
+    this.router.navigate(['/search-results']);
+  }
 
   ngOnInit(): void {
-    this.dzisiaj = new Date().getDate();
+    this.airportList = this.service.airportsList;
   }
+  ngAfterViewInit(): void {}
 }

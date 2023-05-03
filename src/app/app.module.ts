@@ -9,6 +9,8 @@ import { FooterComponent } from './components/footer/footer.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { LoginPopupComponent } from './components/login-popup/login-popup.component';
 import { BookingformComponent } from './components/bookingform/bookingform.component';
+import { FlightTableComponent } from './flight-table/flight-table.component';
+import { BookingService } from './booking.service';
 
 @NgModule({
   declarations: [
@@ -18,9 +20,10 @@ import { BookingformComponent } from './components/bookingform/bookingform.compo
     HomepageComponent,
     LoginPopupComponent,
     BookingformComponent,
+    FlightTableComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
-  providers: [],
+  providers: [BookingService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -2,24 +2,20 @@
   <form [formGroup]="bookinginput" class="border shadow container" action="">
     Origin:
     <select type="text" formControlName="origin">
-      <option value="" disabled>Choose destination town</option>
-      <option value="cracow">Kraków</option>
-      <option value="breslau">Wrocław</option>
-      <option value="warsaw">Warszawa</option>
-      <option value="poznan">Poznań</option>
-      <option value="katowice">Katowice</option>
-      <option value="gdansk">Gdańsk</option>
+      <option value="" disabled>Choose origin town</option>
+      <ng-container *ngFor="let el of airportList">
+        <option [value]="el">
+          {{ el }}
+        </option>
+      </ng-container>
     </select>
     <br />
     Destination:
     <select type="text" formControlName="destination">
       <option value="" disabled>Choose destination town</option>
-      <option value="cracow">Kraków</option>
-      <option value="breslau">Wrocław</option>
-      <option value="warsaw">Warszawa</option>
-      <option value="poznan">Poznań</option>
-      <option value="katowice">Katowice</option>
-      <option value="gdansk">Gdańsk</option>
+      <ng-container *ngFor="let el of airportList">
+        <option [value]="el">{{ el }}</option>
+      </ng-container>
     </select>
     <br />
     <span style="display: inline-block"> Passengers: </span>
