@@ -109,3 +109,23 @@ $background-color-button-hover: rgba(146, 146, 240, 0.356);
 .right img {
   height: 80%;
 }
+
+.logo {
+  height: 95px;
+  width: 95px;
+  overflow: hidden;
+  border-radius: 50%;
+  border: 2px solid white;
+  box-shadow: 2px -2px 2px 2px rgb(96, 119, 148), 0 0 4px 4px rgb(228, 233, 236);
+}
+.logo img {
+  overflow: hidden;
+  object-fit: scale-down;
+  height: 100%;
+}
+.logo img:hover {
+  overflow: hidden;
+  object-fit: scale-down;
+  height: 100%;
+  cursor: pointer;
+}

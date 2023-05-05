@@ -21,7 +21,7 @@ export class BookingformComponent implements OnInit, AfterViewInit {
   ) {}
   dzisiaj: number = new Date().getDay();
   airportList: string[] = [];
-  bookinginput = new FormGroup({
+  bookinginput: FormGroup = this.fb.group({
     origin: new FormControl('', {
       validators: [Validators.required],
       updateOn: 'blur',
@@ -54,7 +54,8 @@ export class BookingformComponent implements OnInit, AfterViewInit {
 
   flightSearch() {
     console.log(this.bookinginput.value);
-    this.bookinginput.value.landingDate;
+    alert(this.bookinginput.value);
+    this.service.bookingQuery = this.bookinginput.value;
     this.router.navigate(['/search-results']);
   }
 

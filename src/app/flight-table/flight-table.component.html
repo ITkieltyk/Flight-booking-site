@@ -1,5 +1,7 @@
 <p>flight-table works!</p>
 <div class="container">
   <aside>Tu będą dane wyszukiwania</aside>
-  <div class="results">Tu będą wyszukane loty</div>
+  <div class="results" *ngFor="let flug of filteredFlights">
+    From: {{ flug.origin }}
+  </div>
 </div>
