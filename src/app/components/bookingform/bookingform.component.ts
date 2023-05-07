@@ -54,7 +54,7 @@ export class BookingformComponent implements OnInit, AfterViewInit {
 
   flightSearch() {
     console.log(this.bookinginput.value);
-    alert(this.bookinginput.value);
+    alert(Object.entries(this.bookinginput.value));
     this.service.bookingQuery = this.bookinginput.value;
     this.router.navigate(['/search-results']);
   }

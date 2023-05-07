@@ -1,7 +1,31 @@
-<p>flight-table works!</p>
 <div class="container">
-  <aside>Tu będą dane wyszukiwania</aside>
-  <div class="results" *ngFor="let flug of filteredFlights">
-    From: {{ flug.origin }}
+  <aside>
+    <div class="query-data">
+      <h3>Search parameters:</h3>
+      <p>Origin: {{ query.origin }}</p>
+      <p>Destination: {{ query.destination }}</p>
+      <p>Take-off date: {{ query.takeoffDate }}</p>
+      <p>Landing date: {{ query.landingDate }}</p>
+      <p>Adults: {{ query.adults }}</p>
+      <p>Children: {{ query.children }}</p>
+      <p>Newborn: {{ query.newborn }}</p>
+    </div>
+  </aside>
+  <div class="results">
+    <div class="result" *ngFor="let flug of filteredFlights">
+      <div>
+        <p>From: {{ flug.origin.city }}, {{ flug.origin.country }}</p>
+        <p>To: {{ flug.destination.city }}, {{ flug.destination.country }}</p>
+      </div>
+      <div>
+        <p>Date: {{ flug.date | date : "mediumDate" }}</p>
+        <p>
+          <!-- Custom pipe to be made -->
+          Flight time: {{ flug.durationM / 60 }}h
+
+          {{ flug.durationM % 60 }} minutes
+        </p>
+      </div>
+    </div>
   </div>
 </div>

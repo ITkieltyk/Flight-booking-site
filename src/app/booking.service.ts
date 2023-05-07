@@ -3,17 +3,24 @@ import { Airport } from './airport';
 import { flights } from 'src/assets/flights';
 import { airports } from 'src/assets/airports';
 import { Flight } from './flight';
+import { flightTest } from 'src/assets/test1';
+import { Bookinginput } from './bookinginput';
 
 @Injectable({
   providedIn: 'root',
 })
 export class BookingService {
   airportsList: string[] = airports.map((airport, index) => airport.city);
-  flightsList: Flight[] = flights.filter(
-    (el: Flight) =>
-      el.origin === this.bookingQuery.origin &&
-      el.destination === this.bookingQuery.destination
-  );
-  bookingQuery: any = {};
+  flightsList: Flight[] = flights;
+  // flightsList: Flight[] = flightTest;
+  bookingQuery: Bookinginput = {
+    origin: '',
+    destination: '',
+    adults: '',
+    children: '',
+    newborn: '',
+    takeoffDate: '',
+    landingDate: '',
+  };
   constructor() {}
 }
