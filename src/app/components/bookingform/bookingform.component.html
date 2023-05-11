@@ -8,7 +8,9 @@
           {{ el }}
         </option>
       </ng-container>
+      <div></div>
     </select>
+
     <br />
     Destination:
     <select type="text" formControlName="destination">
@@ -47,6 +49,11 @@
       />
       <br />
       <button (click)="flightSearch()" type="submit">Search</button>
+      <div
+        *ngIf="bookinginput.controls['origin'].invalid && bookinginput.dirty"
+      >
+        Choose origin and destination
+      </div>
     </div>
   </form>
 </div>

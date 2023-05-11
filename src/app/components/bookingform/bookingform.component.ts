@@ -30,33 +30,34 @@ export class BookingformComponent implements OnInit, AfterViewInit {
       validators: [Validators.required],
       updateOn: 'blur',
     }),
-    adults: new FormControl('', {
+    adults: new FormControl('1', {
       validators: [Validators.required],
       updateOn: 'blur',
     }),
-    children: new FormControl('', {
-      validators: [Validators.required],
+    children: new FormControl('0', {
+      validators: [],
       updateOn: 'blur',
     }),
-    newborn: new FormControl('', {
-      validators: [Validators.required],
+    newborn: new FormControl('0', {
+      validators: [],
       updateOn: 'blur',
     }),
     takeoffDate: new FormControl('', {
-      validators: [Validators.required],
+      validators: [],
       updateOn: 'blur',
     }),
     landingDate: new FormControl('', {
-      validators: [Validators.required],
+      validators: [],
       updateOn: 'blur',
     }),
   });
 
   flightSearch() {
     console.log(this.bookinginput.value);
-    alert(Object.entries(this.bookinginput.value));
-    this.service.bookingQuery = this.bookinginput.value;
-    this.router.navigate(['/search-results']);
+    if (this.bookinginput.valid) {
+      this.service.bookingQuery = this.bookinginput.value;
+      this.router.navigate(['/search-results']);
+    }
   }
 
   ngOnInit(): void {

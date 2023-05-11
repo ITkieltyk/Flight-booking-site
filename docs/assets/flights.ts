@@ -198,14 +198,6 @@ for (let i = 0; i < airports.length; i++) {
   }
 }
 
-const flights: any = [
-  ...monday,
-  ...tuesday,
-  ...wednesday,
-  ...thursday,
-  ...friday,
-  ...saturday,
-  ...sunday,
-];
+const flights: Flight[] = monday;
 
 export { flights };

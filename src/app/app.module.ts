@@ -11,6 +11,7 @@ import { LoginPopupComponent } from './components/login-popup/login-popup.compon
 import { BookingformComponent } from './components/bookingform/bookingform.component';
 import { FlightTableComponent } from './flight-table/flight-table.component';
 import { BookingService } from './booking.service';
+import { DurationPipe } from './duration.pipe';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { BookingService } from './booking.service';
     LoginPopupComponent,
     BookingformComponent,
     FlightTableComponent,
+    DurationPipe,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
   providers: [BookingService],

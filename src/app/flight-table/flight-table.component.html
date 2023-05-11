@@ -12,6 +12,11 @@
     </div>
   </aside>
   <div class="results">
+    <div class="result" *ngIf="filteredFlights.length === 0">
+      <p style="margin: 5px auto">
+        There are no valid flights available. Choose other airports or dates.
+      </p>
+    </div>
     <div class="result" *ngFor="let flug of filteredFlights">
       <div>
         <p>From: {{ flug.origin.city }}, {{ flug.origin.country }}</p>
@@ -19,12 +24,7 @@
       </div>
       <div>
         <p>Date: {{ flug.date | date : "mediumDate" }}</p>
-        <p>
-          <!-- Custom pipe to be made -->
-          Flight time: {{ flug.durationM / 60 }}h
-
-          {{ flug.durationM % 60 }} minutes
-        </p>
+        <p>Flight time: {{ flug.durationM | duration }}</p>
       </div>
     </div>
   </div>

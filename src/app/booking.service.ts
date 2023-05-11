@@ -11,8 +11,8 @@ import { Bookinginput } from './bookinginput';
 })
 export class BookingService {
   airportsList: string[] = airports.map((airport, index) => airport.city);
-  flightsList: Flight[] = flights;
-  // flightsList: Flight[] = flightTest;
+  // flightsList: Flight[] = flights;
+  flightsList: Flight[] = flightTest;
   bookingQuery: Bookinginput = {
     origin: '',
     destination: '',
