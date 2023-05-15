@@ -7,6 +7,7 @@ import {
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import { BookingService } from 'src/app/booking.service';
+import { FlightsService } from 'src/app/flights.service';
 
 @Component({
   selector: 'app-bookingform',
@@ -17,7 +18,8 @@ export class BookingformComponent implements OnInit, AfterViewInit {
   constructor(
     private readonly fb: FormBuilder,
     private service: BookingService,
-    private readonly router: Router
+    private readonly router: Router,
+    private service2: FlightsService
   ) {}
   dzisiaj: number = new Date().getDay();
   airportList: string[] = [];
@@ -42,11 +44,11 @@ export class BookingformComponent implements OnInit, AfterViewInit {
       validators: [],
       updateOn: 'blur',
     }),
-    takeoffDate: new FormControl('', {
+    takeoffDateStart: new FormControl('', {
       validators: [],
       updateOn: 'blur',
     }),
-    landingDate: new FormControl('', {
+    takeoffDateEnd: new FormControl('', {
       validators: [],
       updateOn: 'blur',
     }),
@@ -54,6 +56,8 @@ export class BookingformComponent implements OnInit, AfterViewInit {
 
   flightSearch() {
     console.log(this.bookinginput.value);
+    this.service2.flightGenerator(this.service2.simDays);
+    console.log(this.service2.flights);
     if (this.bookinginput.valid) {
       this.service.bookingQuery = this.bookinginput.value;
       this.router.navigate(['/search-results']);

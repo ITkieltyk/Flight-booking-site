@@ -4,6 +4,6 @@ export interface Bookinginput {
   adults: String;
   children: String;
   newborn: String;
-  takeoffDate: String;
-  landingDate: String;
+  takeoffDateStart: String;
+  takeoffDateEnd: String;
 }

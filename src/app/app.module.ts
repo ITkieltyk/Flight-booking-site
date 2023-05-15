@@ -12,6 +12,7 @@ import { BookingformComponent } from './components/bookingform/bookingform.compo
 import { FlightTableComponent } from './flight-table/flight-table.component';
 import { BookingService } from './booking.service';
 import { DurationPipe } from './duration.pipe';
+import { FlightsService } from './flights.service';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,7 @@ import { DurationPipe } from './duration.pipe';
     DurationPipe,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
-  providers: [BookingService],
+  providers: [BookingService, FlightsService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

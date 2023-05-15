@@ -4,7 +4,7 @@ import { Company } from './company';
 export interface Flight {
   origin: Airport;
   destination: Airport;
-  date: number;
+  date: Date;
   durationM: number;
   plane: string;
   flightNumber: string;
