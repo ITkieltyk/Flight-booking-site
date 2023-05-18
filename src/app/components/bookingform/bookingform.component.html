@@ -1,59 +1,84 @@
 <div class="booking-frame">
   <form [formGroup]="bookinginput" class="border shadow container" action="">
-    Origin:
-    <select type="text" formControlName="origin">
-      <option value="" disabled>Choose origin town</option>
-      <ng-container *ngFor="let el of airportList">
-        <option [value]="el">
-          {{ el }}
-        </option>
-      </ng-container>
-      <div></div>
-    </select>
+    <label for="origin"
+      >Origin:
+      <select name="origin" type="text" formControlName="origin">
+        <option value="" disabled>Choose origin town</option>
+        <ng-container *ngFor="let el of airportList">
+          <option [value]="el">
+            {{ el }}
+          </option>
+        </ng-container>
+      </select>
+    </label>
 
-    <br />
-    Destination:
-    <select type="text" formControlName="destination">
-      <option value="" disabled>Choose destination town</option>
-      <ng-container *ngFor="let el of airportList">
-        <option [value]="el">{{ el }}</option>
-      </ng-container>
-    </select>
-    <br />
-    <span style="display: inline-block"> Passengers: </span>
+    <label for="destination">
+      Destination:
+      <select type="text" formControlName="destination">
+        <option value="" disabled>Choose destination town</option>
+        <ng-container *ngFor="let el of airportList">
+          <option [value]="el">{{ el }}</option>
+        </ng-container>
+      </select>
+    </label>
 
-    <div style="display: inline">
-      Adults: <input type="number" name="" id="" formControlName="adults" />
-      <br />
-      Children (3 - 12 years):
-      <input type="number" formControlName="children" />
-      <br />
-      Newborn (0 - 3 years): <input type="number" formControlName="newborn" />
-      <br />
+    <label for="">
+      <span style="display: block"> Passengers: </span>
+      <div>
+        <label for="">
+          Adults: <input type="number" name="" id="" formControlName="adults" />
+        </label>
+        <label for="">
+          Children (3 - 12 years):
+          <input type="number" formControlName="children" />
+        </label>
+        <label for="">
+          Newborn (0 - 3 years):
+          <input type="number" formControlName="newborn" />
+        </label>
+      </div>
+    </label>
+    <label for="">
       From:
       <input
         type="date"
         name=""
         id=""
         formControlName="takeoffDateStart"
-        [placeholder]="dzisiaj"
+        [min]="dzisiaj"
       />
-      <br />
+    </label>
+    <label for="">
       To:
       <input
         type="date"
         name=""
         id=""
         formControlName="takeoffDateEnd"
-        [placeholder]="dzisiaj"
+        [min]="bookinginput.value.takeoffDateStart"
       />
-      <br />
-      <button (click)="flightSearch()" type="submit">Search</button>
-      <div
-        *ngIf="bookinginput.controls['origin'].invalid && bookinginput.dirty"
-      >
-        Choose origin and destination
-      </div>
+    </label>
+
+    <button
+      (click)="flightSearch()"
+      type="submit"
+      class="menu-button"
+      style="height: 2rem; padding: 0"
+    >
+      Search flights!
+    </button>
+    <div *ngIf="bookinginput.controls['origin'].invalid && bookinginput.dirty">
+      Choose origin and destination
+    </div>
+    <div
+      style="text-align: center"
+      *ngIf="
+        bookinginput.value.origin === bookinginput.value.destination &&
+        bookinginput.controls['destination'].dirty
+      "
+    >
+      Destination cannot be the same as origin! <br />Choose other destination
+      airport!
     </div>
   </form>
 </div>

@@ -26,6 +26,10 @@
         <p>Date: {{ flug.date | date : "mediumDate" }}</p>
         <p>Flight time: {{ flug.durationM | duration }}</p>
       </div>
+      <div>
+        <p>Departure time: {{ flug.date | date : "shortTime" }}</p>
+        <p>Tickets total price:</p>
+      </div>
     </div>
   </div>
 </div>

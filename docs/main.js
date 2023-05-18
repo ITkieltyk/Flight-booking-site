@@ -72,7 +72,7 @@ AppComponent.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_3__["�
         _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "div", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelement"](1, "app-header", 1)(2, "router-outlet")(3, "app-footer", 2);
         _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
-    } }, dependencies: [_angular_router__WEBPACK_IMPORTED_MODULE_4__.RouterOutlet, _components_header_header_component__WEBPACK_IMPORTED_MODULE_1__.HeaderComponent, _components_footer_footer_component__WEBPACK_IMPORTED_MODULE_2__.FooterComponent], styles: ["*[_ngcontent-%COMP%] {\n  box-sizing: border-box;\n  padding: 0;\n  margin: 0;\n}\n\n.site-main[_ngcontent-%COMP%] {\n  width: 100%;\n  padding: 0;\n  margin: 0;\n}\n\n.footer[_ngcontent-%COMP%] {\n  position: fixed;\n  bottom: 0;\n  width: 100%;\n}\n\n.header[_ngcontent-%COMP%] {\n  position: sticky;\n  top: 0;\n  width: 100%;\n  margin: 0;\n}"] });
+    } }, dependencies: [_angular_router__WEBPACK_IMPORTED_MODULE_4__.RouterOutlet, _components_header_header_component__WEBPACK_IMPORTED_MODULE_1__.HeaderComponent, _components_footer_footer_component__WEBPACK_IMPORTED_MODULE_2__.FooterComponent], styles: ["*[_ngcontent-%COMP%] {\n  box-sizing: border-box;\n  padding: 0;\n  margin: 0;\n}\n\n.site-main[_ngcontent-%COMP%] {\n  width: 100%;\n  padding: 0;\n  margin: 0;\n}\n\n.footer[_ngcontent-%COMP%] {\n  position: fixed;\n  bottom: 0;\n  width: 100%;\n  height: 15%;\n}\n\n.header[_ngcontent-%COMP%] {\n  position: sticky;\n  top: 0;\n  width: 100%;\n  margin: 0;\n}"] });
 
 
 /***/ }),
@@ -191,22 +191,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-function BookingformComponent_ng_container_6_Template(rf, ctx) { if (rf & 1) {
+function BookingformComponent_ng_container_7_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementContainerStart"](0);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](1, "option", 15);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementContainerEnd"]();
-} if (rf & 2) {
-    const el_r3 = ctx.$implicit;
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("value", el_r3);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate1"](" ", el_r3, " ");
-} }
-function BookingformComponent_ng_container_13_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementContainerStart"](0);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](1, "option", 15);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](1, "option", 18);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](2);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementContainerEnd"]();
@@ -215,11 +202,31 @@ function BookingformComponent_ng_container_13_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](1);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("value", el_r4);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](el_r4);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate1"](" ", el_r4, " ");
+} }
+function BookingformComponent_ng_container_13_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementContainerStart"](0);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](1, "option", 18);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementContainerEnd"]();
+} if (rf & 2) {
+    const el_r5 = ctx.$implicit;
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("value", el_r5);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](el_r5);
 } }
 function BookingformComponent_div_35_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "div");
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](1, " Choose origin and destination ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+} }
+function BookingformComponent_div_36_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "div", 19);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](1, " Destination cannot be the same as origin! ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](2, "br");
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](3, "Choose other destination airport! ");
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
 } }
 class BookingformComponent {
@@ -228,16 +235,16 @@ class BookingformComponent {
         this.service = service;
         this.router = router;
         this.service2 = service2;
-        this.dzisiaj = new Date().getDay();
+        this.dzisiaj = new Date().toISOString().split('T')[0];
         this.airportList = [];
         this.bookinginput = this.fb.group({
             origin: new _angular_forms__WEBPACK_IMPORTED_MODULE_3__.FormControl('', {
                 validators: [_angular_forms__WEBPACK_IMPORTED_MODULE_3__.Validators.required],
-                updateOn: 'blur',
+                updateOn: 'change',
             }),
             destination: new _angular_forms__WEBPACK_IMPORTED_MODULE_3__.FormControl('', {
                 validators: [_angular_forms__WEBPACK_IMPORTED_MODULE_3__.Validators.required],
-                updateOn: 'blur',
+                updateOn: 'change',
             }),
             adults: new _angular_forms__WEBPACK_IMPORTED_MODULE_3__.FormControl('1', {
                 validators: [_angular_forms__WEBPACK_IMPORTED_MODULE_3__.Validators.required],
@@ -251,7 +258,7 @@ class BookingformComponent {
                 validators: [],
                 updateOn: 'blur',
             }),
-            takeoffDateStart: new _angular_forms__WEBPACK_IMPORTED_MODULE_3__.FormControl('', {
+            takeoffDateStart: new _angular_forms__WEBPACK_IMPORTED_MODULE_3__.FormControl(this.dzisiaj, {
                 validators: [],
                 updateOn: 'blur',
             }),
@@ -267,7 +274,17 @@ class BookingformComponent {
         console.log(this.service2.flights);
         if (this.bookinginput.valid) {
             this.service.bookingQuery = this.bookinginput.value;
-            this.router.navigate(['/search-results']);
+            this.router.navigate(['/search-results'], {
+                queryParams: {
+                    origin: this.bookinginput.value.origin,
+                    destination: this.bookinginput.value.destination,
+                    adults: this.bookinginput.value.adults,
+                    children: this.bookinginput.value.children,
+                    newborn: this.bookinginput.value.newborn,
+                    takeoffDateStart: this.bookinginput.value.takeoffDateStart,
+                    takeoffDateEnd: this.bookinginput.value.takeoffDateEnd,
+                },
+            });
         }
     }
     ngOnInit() {
@@ -276,57 +293,67 @@ class BookingformComponent {
     ngAfterViewInit() { }
 }
 BookingformComponent.ɵfac = function BookingformComponent_Factory(t) { return new (t || BookingformComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdirectiveInject"](_angular_forms__WEBPACK_IMPORTED_MODULE_3__.FormBuilder), _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdirectiveInject"](src_app_booking_service__WEBPACK_IMPORTED_MODULE_0__.BookingService), _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_4__.Router), _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdirectiveInject"](src_app_flights_service__WEBPACK_IMPORTED_MODULE_1__.FlightsService)); };
-BookingformComponent.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdefineComponent"]({ type: BookingformComponent, selectors: [["app-bookingform"]], decls: 36, vars: 6, consts: [[1, "booking-frame"], ["action", "", 1, "border", "shadow", "container", 3, "formGroup"], ["type", "text", "formControlName", "origin"], ["value", "", "disabled", ""], [4, "ngFor", "ngForOf"], ["type", "text", "formControlName", "destination"], [2, "display", "inline-block"], [2, "display", "inline"], ["type", "number", "name", "", "id", "", "formControlName", "adults"], ["type", "number", "formControlName", "children"], ["type", "number", "formControlName", "newborn"], ["type", "date", "name", "", "id", "", "formControlName", "takeoffDateStart", 3, "placeholder"], ["type", "date", "name", "", "id", "", "formControlName", "takeoffDateEnd", 3, "placeholder"], ["type", "submit", 3, "click"], [4, "ngIf"], [3, "value"]], template: function BookingformComponent_Template(rf, ctx) { if (rf & 1) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "div", 0)(1, "form", 1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](2, " Origin: ");
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](3, "select", 2)(4, "option", 3);
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](5, "Choose origin town");
+BookingformComponent.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdefineComponent"]({ type: BookingformComponent, selectors: [["app-bookingform"]], decls: 37, vars: 7, consts: [[1, "booking-frame"], ["action", "", 1, "border", "shadow", "container", 3, "formGroup"], ["for", "origin"], ["name", "origin", "type", "text", "formControlName", "origin"], ["value", "", "disabled", ""], [4, "ngFor", "ngForOf"], ["for", "destination"], ["type", "text", "formControlName", "destination"], ["for", ""], [2, "display", "block"], ["type", "number", "name", "", "id", "", "formControlName", "adults"], ["type", "number", "formControlName", "children"], ["type", "number", "formControlName", "newborn"], ["type", "date", "name", "", "id", "", "formControlName", "takeoffDateStart", 3, "min"], ["type", "date", "name", "", "id", "", "formControlName", "takeoffDateEnd", 3, "min"], ["type", "submit", 1, "menu-button", 2, "height", "2rem", "padding", "0", 3, "click"], [4, "ngIf"], ["style", "text-align: center", 4, "ngIf"], [3, "value"], [2, "text-align", "center"]], template: function BookingformComponent_Template(rf, ctx) { if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "div", 0)(1, "form", 1)(2, "label", 2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](3, "Origin: ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](4, "select", 3)(5, "option", 4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](6, "Choose origin town");
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](6, BookingformComponent_ng_container_6_Template, 3, 2, "ng-container", 4);
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](7, "div");
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](8, "br");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](7, BookingformComponent_ng_container_7_Template, 3, 2, "ng-container", 5);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]()();
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](8, "label", 6);
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](9, " Destination: ");
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](10, "select", 5)(11, "option", 3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](10, "select", 7)(11, "option", 4);
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](12, "Choose destination town");
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](13, BookingformComponent_ng_container_13_Template, 3, 2, "ng-container", 4);
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](14, "br");
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](15, "span", 6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](13, BookingformComponent_ng_container_13_Template, 3, 2, "ng-container", 5);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]()();
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](14, "label", 8)(15, "span", 9);
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](16, " Passengers: ");
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](17, "div", 7);
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](18, " Adults: ");
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](19, "input", 8)(20, "br");
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](21, " Children (3 - 12 years): ");
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](22, "input", 9)(23, "br");
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](24, " Newborn (0 - 3 years): ");
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](25, "input", 10)(26, "br");
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](27, " From: ");
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](28, "input", 11)(29, "br");
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](30, " To: ");
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](31, "input", 12)(32, "br");
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](33, "button", 13);
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵlistener"]("click", function BookingformComponent_Template_button_click_33_listener() { return ctx.flightSearch(); });
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](34, "Search");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](17, "div")(18, "label", 8);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](19, " Adults: ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](20, "input", 10);
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](35, BookingformComponent_div_35_Template, 2, 0, "div", 14);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](21, "label", 8);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](22, " Children (3 - 12 years): ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](23, "input", 11);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](24, "label", 8);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](25, " Newborn (0 - 3 years): ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](26, "input", 12);
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]()()();
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](27, "label", 8);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](28, " From: ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](29, "input", 13);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](30, "label", 8);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](31, " To: ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](32, "input", 14);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](33, "button", 15);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵlistener"]("click", function BookingformComponent_Template_button_click_33_listener() { return ctx.flightSearch(); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](34, " Search flights! ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](35, BookingformComponent_div_35_Template, 2, 0, "div", 16);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](36, BookingformComponent_div_36_Template, 4, 0, "div", 17);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]()();
     } if (rf & 2) {
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](1);
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("formGroup", ctx.bookinginput);
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](5);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](6);
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ngForOf", ctx.airportList);
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](7);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](6);
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ngForOf", ctx.airportList);
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](15);
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("placeholder", ctx.dzisiaj);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](16);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("min", ctx.dzisiaj);
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](3);
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("placeholder", ctx.dzisiaj);
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("min", ctx.bookinginput.value.takeoffDateStart);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](3);
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ngIf", ctx.bookinginput.controls["origin"].invalid && ctx.bookinginput.dirty);
-    } }, dependencies: [_angular_common__WEBPACK_IMPORTED_MODULE_5__.NgForOf, _angular_common__WEBPACK_IMPORTED_MODULE_5__.NgIf, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["ɵNgNoValidate"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__.NgSelectOption, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["ɵNgSelectMultipleOption"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__.DefaultValueAccessor, _angular_forms__WEBPACK_IMPORTED_MODULE_3__.NumberValueAccessor, _angular_forms__WEBPACK_IMPORTED_MODULE_3__.SelectControlValueAccessor, _angular_forms__WEBPACK_IMPORTED_MODULE_3__.NgControlStatus, _angular_forms__WEBPACK_IMPORTED_MODULE_3__.NgControlStatusGroup, _angular_forms__WEBPACK_IMPORTED_MODULE_3__.FormGroupDirective, _angular_forms__WEBPACK_IMPORTED_MODULE_3__.FormControlName], styles: [".border[_ngcontent-%COMP%] {\n  border: 1px solid blue;\n  border-radius: 5px;\n  border-top-right-radius: 10px;\n  border-bottom-left-radius: 10px;\n}\n\n.container[_ngcontent-%COMP%] {\n  height: 300px;\n  padding: 10px 10px;\n}\n\nselect[_ngcontent-%COMP%], input[_ngcontent-%COMP%] {\n  margin: 5px;\n}\n\n.shadow[_ngcontent-%COMP%] {\n  box-shadow: 2px -2px 3px 3px rgba(0, 0, 126, 0.514);\n}"] });
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ngIf", ctx.bookinginput.value.origin === ctx.bookinginput.value.destination && ctx.bookinginput.controls["destination"].dirty);
+    } }, dependencies: [_angular_common__WEBPACK_IMPORTED_MODULE_5__.NgForOf, _angular_common__WEBPACK_IMPORTED_MODULE_5__.NgIf, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["ɵNgNoValidate"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__.NgSelectOption, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["ɵNgSelectMultipleOption"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__.DefaultValueAccessor, _angular_forms__WEBPACK_IMPORTED_MODULE_3__.NumberValueAccessor, _angular_forms__WEBPACK_IMPORTED_MODULE_3__.SelectControlValueAccessor, _angular_forms__WEBPACK_IMPORTED_MODULE_3__.NgControlStatus, _angular_forms__WEBPACK_IMPORTED_MODULE_3__.NgControlStatusGroup, _angular_forms__WEBPACK_IMPORTED_MODULE_3__.FormGroupDirective, _angular_forms__WEBPACK_IMPORTED_MODULE_3__.FormControlName], styles: [".border[_ngcontent-%COMP%] {\n  border: 1px solid blue;\n  border-radius: 5px;\n  border-top-right-radius: 20px;\n  border-bottom-left-radius: 20px;\n}\n\n.container[_ngcontent-%COMP%] {\n  height: 300px;\n  padding: 10px 10px;\n  justify-content: center;\n  background-color: rgba(255, 255, 255, 0.711);\n  width: 100%;\n}\n\nselect[_ngcontent-%COMP%], input[_ngcontent-%COMP%] {\n  margin: 5px;\n  height: 1.5em;\n  width: 11rem;\n  background-color: unset;\n  border: 1px solid black;\n  box-shadow: 0px 0px 1px 1px grey;\n  border-radius: 0.3rem;\n}\n\nselect[_ngcontent-%COMP%]:hover, input[_ngcontent-%COMP%]:hover {\n  margin: 5px;\n  height: 1.5em;\n  width: 11rem;\n  background-color: unset;\n  border: 1px solid grey;\n  box-shadow: 0px 0px 1px 1px black;\n  border-radius: 0.3rem;\n}\n\ninput[type=number][_ngcontent-%COMP%] {\n  width: 2rem;\n  text-align: end;\n}\n\nlabel[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  flex-wrap: wrap;\n}\n\n.shadow[_ngcontent-%COMP%] {\n  box-shadow: 2px -2px 3px 3px rgba(0, 0, 126, 0.514);\n}\n\nbutton[_ngcontent-%COMP%] {\n  margin: 5px auto;\n  display: block;\n  width: -moz-fit-content;\n  width: fit-content;\n}"] });
 
 
 /***/ }),
@@ -353,7 +380,7 @@ FooterComponent.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_0__
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "footer", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "Dane kontaktowe, prawa autorskie");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    } }, styles: ["*[_ngcontent-%COMP%] {\n  box-sizing: border-box;\n}\n\n.header-border[_ngcontent-%COMP%] {\n  border: 2px solid rgb(228, 228, 235);\n  border-radius: 5px;\n}\n\n.footer[_ngcontent-%COMP%] {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  height: 100px;\n  background-color: rgb(78, 78, 243);\n  margin: 0;\n}\n\n.menu-button[_ngcontent-%COMP%] {\n  height: 90px;\n  width: 90px;\n  text-align: center;\n  font-size: 1rem;\n  padding: 2rem 0;\n  background-color: rgb(0, 0, 153);\n  border-top-right-radius: 10px;\n  border-bottom-left-radius: 10px;\n  box-shadow: 2px -2px 2px 2px rgb(96, 119, 148), 0 0 4px 4px rgb(228, 233, 236);\n  color: white;\n}\n\n.menu-button[_ngcontent-%COMP%]:hover {\n  cursor: pointer;\n  height: 100px;\n  width: 100px;\n  text-align: center;\n  font-size: 1.2rem;\n  padding: 2rem 0;\n  background-color: rgba(146, 146, 240, 0.356);\n  border-top-right-radius: 10px;\n  border-bottom-left-radius: 10px;\n  box-shadow: 3px -3px 3px 3px rgb(92, 123, 163), 0 0 6px 6px rgb(228, 233, 236);\n  overflow: visible;\n}"] });
+    } }, styles: ["*[_ngcontent-%COMP%] {\n  box-sizing: border-box;\n}\n\n.header-border[_ngcontent-%COMP%] {\n  border: 2px solid rgb(228, 228, 235);\n  border-radius: 5px;\n}\n\n.footer[_ngcontent-%COMP%] {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  background-color: rgb(78, 78, 243);\n  margin: 0;\n  height: 100%;\n}\n\n.menu-button[_ngcontent-%COMP%] {\n  height: 90px;\n  width: 90px;\n  text-align: center;\n  font-size: 1rem;\n  padding: 2rem 0;\n  background-color: rgb(0, 0, 153);\n  border-top-right-radius: 10px;\n  border-bottom-left-radius: 10px;\n  box-shadow: 2px -2px 2px 2px rgb(96, 119, 148), 0 0 4px 4px rgb(228, 233, 236);\n  color: white;\n}\n\n.menu-button[_ngcontent-%COMP%]:hover {\n  cursor: pointer;\n  height: 100px;\n  width: 100px;\n  text-align: center;\n  font-size: 1.2rem;\n  padding: 2rem 0;\n  background-color: rgba(146, 146, 240, 0.356);\n  border-top-right-radius: 10px;\n  border-bottom-left-radius: 10px;\n  box-shadow: 3px -3px 3px 3px rgb(92, 123, 163), 0 0 6px 6px rgb(228, 233, 236);\n  overflow: visible;\n}"] });
 
 
 /***/ }),
@@ -448,7 +475,7 @@ HomepageComponent.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_1
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](1, "img", 1)(2, "app-bookingform", 2);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    } }, dependencies: [_bookingform_bookingform_component__WEBPACK_IMPORTED_MODULE_0__.BookingformComponent], styles: [".main[_ngcontent-%COMP%] {\n  height: calc(100% - 180px);\n  display: flex;\n  column-gap: 5px;\n  flex-wrap: wrap;\n}\n\n.floating-booking[_ngcontent-%COMP%] {\n  margin: 10px auto;\n  width: -moz-fit-content;\n  width: fit-content;\n}\n\n.main[_ngcontent-%COMP%]   img[_ngcontent-%COMP%] {\n  height: calc(100vh - 200px);\n  opacity: 0.7;\n  overflow: hidden;\n  width: 50%;\n  z-index: -1;\n}\n\n@media screen and (max-width: 768px) {\n  .main[_ngcontent-%COMP%]   img[_ngcontent-%COMP%] {\n    opacity: 0.7;\n    overflow: hidden;\n    width: 100%;\n    height: 200px;\n    object-fit: cover;\n    margin: auto;\n  }\n  .main[_ngcontent-%COMP%] {\n    height: auto;\n  }\n}"] });
+    } }, dependencies: [_bookingform_bookingform_component__WEBPACK_IMPORTED_MODULE_0__.BookingformComponent], styles: [".main[_ngcontent-%COMP%] {\n  height: 75vh;\n  display: flex;\n  flex-wrap: wrap;\n  position: relative;\n}\n\n.floating-booking[_ngcontent-%COMP%] {\n  position: absolute;\n  top: 3%;\n  left: 0;\n  right: 5%;\n  margin: 0 auto;\n  width: -moz-fit-content;\n  width: fit-content;\n}\n\n.main[_ngcontent-%COMP%]   img[_ngcontent-%COMP%] {\n  height: 100%;\n  width: 100%;\n  opacity: 0.5;\n  overflow: hidden;\n  z-index: -1;\n  position: relative;\n  background-color: white;\n  object-fit: cover;\n}\n\n@media screen and (max-width: 800px) {\n  .main[_ngcontent-%COMP%]   img[_ngcontent-%COMP%] {\n    opacity: 0.7;\n    overflow: hidden;\n    width: 100%;\n    object-fit: cover;\n    margin: auto;\n    position: static;\n    height: 75vh;\n  }\n  .main[_ngcontent-%COMP%] {\n    height: -moz-fit-content;\n    height: fit-content;\n  }\n  .floating-booking[_ngcontent-%COMP%] {\n    width: 80%;\n    left: 0;\n    right: 0;\n    top: 5%;\n    margin: auto auto;\n  }\n}"] });
 
 
 /***/ }),
@@ -551,6 +578,13 @@ function FlightTableComponent_div_21_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](10, "p");
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](11);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵpipe"](12, "duration");
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()();
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](13, "div")(14, "p");
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](15);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵpipe"](16, "date");
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](17, "p");
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](18, "Tickets total price:");
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()()();
 } if (rf & 2) {
     const flug_r2 = ctx.$implicit;
@@ -559,9 +593,11 @@ function FlightTableComponent_div_21_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](2);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate2"]("To: ", flug_r2.destination.city, ", ", flug_r2.destination.country, "");
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](3);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate1"]("Date: ", _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵpipeBind2"](9, 6, flug_r2.date, "mediumDate"), "");
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate1"]("Date: ", _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵpipeBind2"](9, 7, flug_r2.date, "mediumDate"), "");
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](3);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate1"]("Flight time: ", _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵpipeBind1"](12, 9, flug_r2.durationM), "");
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate1"]("Flight time: ", _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵpipeBind1"](12, 10, flug_r2.durationM), "");
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](4);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate1"]("Departure time: ", _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵpipeBind2"](16, 12, flug_r2.date, "shortTime"), "");
 } }
 class FlightTableComponent {
     constructor(service, service2) {
@@ -619,7 +655,7 @@ FlightTableComponent.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODUL
         _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()()();
         _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](19, "div", 2);
         _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](20, FlightTableComponent_div_20_Template, 3, 0, "div", 3);
-        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](21, FlightTableComponent_div_21_Template, 13, 11, "div", 4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](21, FlightTableComponent_div_21_Template, 19, 15, "div", 4);
         _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()();
     } if (rf & 2) {
         _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](6);
@@ -640,7 +676,7 @@ FlightTableComponent.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODUL
         _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("ngIf", ctx.filteredFlights.length === 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](1);
         _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("ngForOf", ctx.filteredFlights);
-    } }, dependencies: [_angular_common__WEBPACK_IMPORTED_MODULE_4__.NgForOf, _angular_common__WEBPACK_IMPORTED_MODULE_4__.NgIf, _angular_common__WEBPACK_IMPORTED_MODULE_4__.DatePipe, _duration_pipe__WEBPACK_IMPORTED_MODULE_2__.DurationPipe], styles: [".result[_ngcontent-%COMP%] {\n  border: 2px blue solid;\n  margin: 10px auto;\n  padding: 0 5px;\n  border-radius: 5px;\n  display: flex;\n  column-gap: 10px;\n  justify-content: space-between;\n}\n\n.results[_ngcontent-%COMP%] {\n  width: calc(100vw - 24%);\n  padding: 0 10px;\n  margin: 0 auto;\n  margin-bottom: 100px;\n}\n\naside[_ngcontent-%COMP%] {\n  width: 20%;\n  padding: 10px;\n  margin: 0 auto;\n}\n\n.container[_ngcontent-%COMP%] {\n  display: flex;\n  flex-wrap: wrap;\n}\n\n.query-data[_ngcontent-%COMP%] {\n  border: 2px blue solid;\n  border-radius: 5px;\n  padding: 5px;\n}\n\n.query-data[_ngcontent-%COMP%]   p[_ngcontent-%COMP%] {\n  margin: 3px 0;\n}"] });
+    } }, dependencies: [_angular_common__WEBPACK_IMPORTED_MODULE_4__.NgForOf, _angular_common__WEBPACK_IMPORTED_MODULE_4__.NgIf, _angular_common__WEBPACK_IMPORTED_MODULE_4__.DatePipe, _duration_pipe__WEBPACK_IMPORTED_MODULE_2__.DurationPipe], styles: [".result[_ngcontent-%COMP%] {\n  border: 2px blue solid;\n  margin: 10px auto;\n  padding: 0 5px;\n  border-radius: 5px;\n  display: flex;\n  column-gap: 10px;\n  justify-content: space-between;\n  flex-wrap: wrap;\n}\n\n.results[_ngcontent-%COMP%] {\n  width: calc(100vw - 24%);\n  padding: 0 10px;\n  margin: 0 auto;\n  margin-bottom: 100px;\n}\n\naside[_ngcontent-%COMP%] {\n  width: 20%;\n  padding: 10px;\n  margin: 0 auto;\n}\n\n.container[_ngcontent-%COMP%] {\n  display: flex;\n  flex-wrap: wrap;\n}\n\n.query-data[_ngcontent-%COMP%] {\n  border: 2px blue solid;\n  border-radius: 5px;\n  padding: 5px;\n}\n\n.query-data[_ngcontent-%COMP%]   p[_ngcontent-%COMP%] {\n  margin: 3px 0;\n}\n\n@media screen and (max-width: 768px) {\n  .results[_ngcontent-%COMP%] {\n    width: unset;\n  }\n  .container[_ngcontent-%COMP%] {\n    display: block;\n  }\n  aside[_ngcontent-%COMP%] {\n    width: unset;\n    text-align: center;\n    word-wrap: normal;\n  }\n}"] });
 
 
 /***/ }),

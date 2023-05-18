@@ -6,6 +6,7 @@
   display: flex;
   column-gap: 10px;
   justify-content: space-between;
+  flex-wrap: wrap;
 }
 .results {
   width: calc(100vw - 24%);
@@ -29,4 +30,18 @@ aside {
 }
 .query-data p {
   margin: 3px 0;
+}
+
+@media screen and (max-width: 768px) {
+  .results {
+    width: unset;
+  }
+  .container {
+    display: block;
+  }
+  aside {
+    width: unset;
+    text-align: center;
+    word-wrap: normal;
+  }
 }

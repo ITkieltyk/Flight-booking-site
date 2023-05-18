@@ -2,3 +2,28 @@
 * {
   margin: 0;
 }
+$background-color-button: rgb(0, 0, 153);
+$background-color-button-hover: rgba(146, 146, 240, 0.356);
+.menu-button {
+  text-align: center;
+  font-size: 1rem;
+  padding: 2rem 0;
+  background-color: $background-color-button;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  box-shadow: 2px -2px 2px 2px rgb(96, 119, 148), 0 0 4px 4px rgb(228, 233, 236);
+  color: white;
+}
+
+.menu-button:hover {
+  cursor: pointer;
+
+  text-align: center;
+  font-size: 1.2rem;
+  padding: 2rem 0;
+  background-color: $background-color-button-hover;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  box-shadow: 3px -3px 3px 3px rgb(92, 123, 163), 0 0 6px 6px rgb(228, 233, 236);
+  overflow: visible;
+}
