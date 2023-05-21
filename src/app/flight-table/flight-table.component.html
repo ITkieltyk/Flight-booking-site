@@ -1,34 +1,53 @@
 <div class="container">
-  <aside>
+  <div class="query-container">
     <div class="query-data">
-      <h3>Search parameters:</h3>
-      <p>Origin: {{ query.origin }}</p>
-      <p>Destination: {{ query.destination }}</p>
-      <p>From: {{ query.takeoffDateStart }}</p>
-      <p>To: {{ query.takeoffDateEnd }}</p>
-      <p>Adults: {{ query.adults }}</p>
-      <p>Children: {{ query.children }}</p>
-      <p>Newborn: {{ query.newborn }}</p>
+      <h3 class="grid-col-1">Search parameters:</h3>
+      <p class="grid-col-2">Origin: {{ query.origin }}</p>
+      <p class="grid-col-3">Destination: {{ query.destination }}</p>
+      <p class="grid-col-1">From: {{ query.takeoffDateStart }}</p>
+      <p class="grid-col-2">To: {{ query.takeoffDateEnd }}</p>
+      <p class="grid-col-1">Adults: {{ query.adults }}</p>
+      <p class="grid-col-2">Children: {{ query.children }}</p>
+      <p class="grid-col-3">Newborn: {{ query.newborn }}</p>
     </div>
-  </aside>
+  </div>
   <div class="results">
     <div class="result" *ngIf="filteredFlights.length === 0">
       <p style="margin: 5px auto">
         There are no valid flights available. Choose other airports or dates.
       </p>
     </div>
-    <div class="result" *ngFor="let flug of filteredFlights">
-      <div>
-        <p>From: {{ flug.origin.city }}, {{ flug.origin.country }}</p>
-        <p>To: {{ flug.destination.city }}, {{ flug.destination.country }}</p>
+    <div class="result-container" *ngFor="let flug of filteredFlights">
+      <div class="result-head">
+        {{ flug.date | date : "shortDate" }}
+        {{ flug.flightPrice | currency : "USD" }}
       </div>
-      <div>
-        <p>Date: {{ flug.date | date : "mediumDate" }}</p>
-        <p>Flight time: {{ flug.durationM | duration }}</p>
-      </div>
-      <div>
-        <p>Departure time: {{ flug.date | date : "shortTime" }}</p>
-        <p>Tickets total price:</p>
+      <div class="result">
+        <div class="result-left">
+          <div>
+            <p>Operated by:</p>
+            <p>{{ flug.company.name }}</p>
+          </div>
+          <div>
+            <p>{{ flug.origin.city }}, {{ flug.origin.country }}</p>
+            <p>
+              {{ flug.date | date : "shortTime" }}
+            </p>
+          </div>
+        </div>
+        <div>
+          <p>{{ flug.flightNumber }}</p>
+          <img
+            src="./../../assets/plane-icon.jpg"
+            style="height: 20px"
+            alt=""
+          />
+          <p>{{ flug.durationM | duration }}</p>
+        </div>
+        <div>
+          <p>{{ flug.destination.city }}, {{ flug.destination.country }}</p>
+          {{ flug.date | landingtimer : flug.durationM | date : "shortTime" }}
+        </div>
       </div>
     </div>
   </div>

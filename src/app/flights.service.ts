@@ -52,6 +52,8 @@ export class FlightsService {
             startAirport.coords - landAirport.coords > 0
               ? (startAirport.coords - landAirport.coords) * 30 + 30
               : (landAirport.coords - startAirport.coords) * 30 + 30;
+          const price: number =
+            50 + (duration / 30) * 25 + Math.round((Math.random() - 0.5) * 10);
           const company: Company =
             this.companies[Math.floor(this.companies.length * Math.random())];
           const element: Flight = {
@@ -69,6 +71,7 @@ export class FlightsService {
               company.flightNamePrefix +
               Math.floor(Math.random() * 9999).toString(),
             company: company,
+            flightPrice: price,
           };
 
           this.flights.push(element);

@@ -9,4 +9,5 @@ export interface Flight {
   plane: string;
   flightNumber: string;
   company: Company;
+  flightPrice: number;
 }

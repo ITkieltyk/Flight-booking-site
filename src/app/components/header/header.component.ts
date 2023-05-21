@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -13,6 +14,7 @@ export class HeaderComponent implements OnInit {
   defaultUserPic: string =
     'https://www.pngall.com/wp-content/uploads/5/Profile-PNG-File-Download-Free.png';
   userPic: string = '';
+
   loginClick(element: HTMLDivElement) {
     element.classList.toggle('login-visibility-on');
   }
