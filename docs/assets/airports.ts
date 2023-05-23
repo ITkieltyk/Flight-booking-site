@@ -51,7 +51,7 @@ const airports: Airport[] = [
     coords: 16,
   },
   {
-    city: 'Honk Kong',
+    city: 'Hong Kong',
     country: 'China',
     continent: 'Asia',
     coords: -15,

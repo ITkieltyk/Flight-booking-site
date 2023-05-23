@@ -15,22 +15,22 @@ export class FlightsService {
     {
       name: 'Lufthansa',
       flightNamePrefix: 'LH',
-      logo: './../../assets/Lufthansa.png',
+      logo: 'assets/Lufthansa.png',
     },
     {
       name: 'LOT',
       flightNamePrefix: 'LT',
-      logo: './../../assets/PLL LOT.png',
+      logo: 'assets/PLL LOT.png',
     },
     {
       name: 'Tap Portugal',
       flightNamePrefix: 'TP',
-      logo: './../../assets/Tap portugal.png',
+      logo: 'assets/Tap portugal.png',
     },
     {
       name: 'Emirates',
       flightNamePrefix: 'EM',
-      logo: './../../assets/Emirates.png',
+      logo: 'assets/Emirates.png',
     },
     {
       name: 'Ryan Air',
