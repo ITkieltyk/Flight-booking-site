@@ -15,7 +15,8 @@ export class FlightTableComponent implements OnInit, AfterViewInit {
     private service: BookingService,
     private service2: FlightsService
   ) {}
-  forecast: any = {};
+  forecastTemp: number = 0;
+  forecastIcon: string = './../../assets/loading.gif';
   query: Bookinginput = {
     origin: '',
     destination: '',
@@ -48,7 +49,9 @@ export class FlightTableComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
     this.service.getForecast(this.query.destination.valueOf()).subscribe({
       next: (res: any) => {
-        this.forecast = res;
+        this.forecastTemp = Math.round((res.main.temp - 273) * 10) / 10;
+        // console.log(res);
+        this.forecastIcon = `https://openweathermap.org/img/wn/${res.weather[0].icon}@2x.png`;
       },
     });
   }

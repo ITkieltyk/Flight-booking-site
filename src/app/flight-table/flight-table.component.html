@@ -1,14 +1,20 @@
 <div class="container">
   <div class="query-container">
     <div class="query-data">
-      <h3 class="grid-col-1">Search parameters:</h3>
-      <p class="grid-col-2">Origin: {{ query.origin }}</p>
-      <p class="grid-col-3">Destination: {{ query.destination }}</p>
-      <p class="grid-col-1">From: {{ query.takeoffDateStart }}</p>
-      <p class="grid-col-2">To: {{ query.takeoffDateEnd }}</p>
-      <p class="grid-col-1">Adults: {{ query.adults }}</p>
-      <p class="grid-col-2">Children: {{ query.children }}</p>
-      <p class="grid-col-3">Newborn: {{ query.newborn }}</p>
+      <h3 class="grid-col-1 sm-grid-col-1-2">Search parameters:</h3>
+      <p class="grid-col-2 sm-grid-col-1">Origin: {{ query.origin }}</p>
+      <p class="grid-col-3 sm-grid-col-2">
+        Destination: {{ query.destination }}
+      </p>
+      <p class="grid-col-1 sm-grid-col-1">From: {{ query.takeoffDateStart }}</p>
+      <p class="grid-col-2 sm-grid-col-2">To: {{ query.takeoffDateEnd }}</p>
+      <p class="grid-col-1 sm-grid-col-1">Adults: {{ query.adults }}</p>
+      <p class="grid-col-2 sm-grid-col-2">Children: {{ query.children }}</p>
+      <p class="grid-col-3 sm-grid-col-1-2">Newborn: {{ query.newborn }}</p>
+    </div>
+    <div class="query-weather">
+      <img [src]="forecastIcon" alt="ForecastImage" style="height: 3rem" />
+      <p>Temp: {{ forecastTemp }} <sup>o</sup>C</p>
     </div>
   </div>
   <div class="results">
@@ -23,30 +29,35 @@
         {{ flug.flightPrice | currency : "USD" }}
       </div>
       <div class="result">
-        <div class="result-left">
-          <div>
-            <p>Operated by:</p>
-            <p>{{ flug.company.name }}</p>
-          </div>
-          <div>
+        <div class="vertical-center result-left">
+          <p><small>Operated by:</small></p>
+          <p>{{ flug.company.name }}</p>
+          <img [src]="flug.company.logo" alt="" style="height: 40px" />
+        </div>
+        <div class="result-flightdata">
+          <div class="vertical-center">
             <p>{{ flug.origin.city }}, {{ flug.origin.country }}</p>
             <p>
               {{ flug.date | date : "shortTime" }}
             </p>
           </div>
-        </div>
-        <div>
-          <p>{{ flug.flightNumber }}</p>
-          <img
-            src="./../../assets/plane-icon.jpg"
-            style="height: 20px"
-            alt=""
-          />
-          <p>{{ flug.durationM | duration }}</p>
-        </div>
-        <div>
-          <p>{{ flug.destination.city }}, {{ flug.destination.country }}</p>
-          {{ flug.date | landingtimer : flug.durationM | date : "shortTime" }}
+          <div>
+            <p>{{ flug.flightNumber }}</p>
+            <img
+              src="./../../assets/plane-icon.jpg"
+              style="height: 30px"
+              alt=""
+            />
+            <p>{{ flug.durationM | duration }}</p>
+          </div>
+          <div class="vertical-center">
+            <p>{{ flug.destination.city }}, {{ flug.destination.country }}</p>
+            <p>
+              {{
+                flug.date | landingtimer : flug.durationM | date : "shortTime"
+              }}
+            </p>
+          </div>
         </div>
       </div>
     </div>

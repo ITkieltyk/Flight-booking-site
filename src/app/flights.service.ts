@@ -15,22 +15,27 @@ export class FlightsService {
     {
       name: 'Lufthansa',
       flightNamePrefix: 'LH',
+      logo: './../../assets/Lufthansa.png',
     },
     {
       name: 'LOT',
       flightNamePrefix: 'LT',
+      logo: './../../assets/PLL LOT.png',
     },
     {
       name: 'Tap Portugal',
       flightNamePrefix: 'TP',
+      logo: './../../assets/Tap portugal.png',
     },
     {
       name: 'Emirates',
       flightNamePrefix: 'EM',
+      logo: './../../assets/Emirates.png',
     },
     {
       name: 'Ryan Air',
       flightNamePrefix: 'RA',
+      logo: './../../assets/RyanAir.jpeg',
     },
   ];
   flights: Flight[] = [];
