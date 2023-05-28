@@ -17,13 +17,17 @@
       <p>Temp: {{ forecastTemp }} <sup>o</sup>C</p>
     </div>
   </div>
+
   <div class="results">
     <div class="result" *ngIf="filteredFlights.length === 0">
       <p style="margin: 5px auto">
         There are no valid flights available. Choose other airports or dates.
       </p>
     </div>
-    <div class="result-container" *ngFor="let flug of filteredFlights">
+    <div
+      class="result-container"
+      *ngFor="let flug of filteredFlights; let i = index"
+    >
       <div class="result-head">
         {{ flug.date | date : "shortDate" }}
         {{ flug.flightPrice | currency : "USD" }}
@@ -60,6 +64,17 @@
             </p>
           </div>
         </div>
+      </div>
+      <div class="result-footer">
+        <input
+          type="checkbox"
+          [(ngModel)]="secondLuggage"
+          name="luggage"
+          id="luggage"
+        />Additional piece of luggage (20kg)
+        <button class="button" (click)="bookFlightClick(flug)">
+          Book this flight!
+        </button>
       </div>
     </div>
   </div>

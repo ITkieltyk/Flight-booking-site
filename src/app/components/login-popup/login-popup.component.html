@@ -1,10 +1,11 @@
 <div class="login-container">
-  <form action="">
-    Login:
-    <input type="text" /><br /><br />
+  <form [formGroup]="loginForm" action="">
+    Email:
+    <input formControlName="login" type="email" /><br />
     Password:
-    <input type="password" name="" id="" />
-    <br /><br />
-    <button>Log In</button>
+    <input formControlName="pass" type="password" name="" id="" />
+    <br />
+    <button (click)="logInButton()">Log In</button
+    ><button class="aaa" (click)="signInButton()">Sign In</button>
   </form>
 </div>

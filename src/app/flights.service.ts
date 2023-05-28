@@ -35,7 +35,7 @@ export class FlightsService {
     {
       name: 'Ryan Air',
       flightNamePrefix: 'RA',
-      logo: './../../assets/RyanAir.jpeg',
+      logo: 'assets/RyanAir.jpeg',
     },
   ];
   flights: Flight[] = [];

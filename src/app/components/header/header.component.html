@@ -12,8 +12,9 @@
 
   <div class="header-border right">
     <img [src]="userPic" alt="user" />
+    <div *ngIf=""></div>
   </div>
 </header>
 <div #loginPop class="login-visibility-off">
-  <app-login-popup></app-login-popup>
+  <app-login-popup (openClose)="setLoginVisibility($event)"></app-login-popup>
 </div>

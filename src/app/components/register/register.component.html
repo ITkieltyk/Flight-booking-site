@@ -1,0 +1,28 @@
+<div class="form-container">
+  <form [formGroup]="signInForm" action="">
+    <label for="name"
+      ><span> Name: </span>
+      <input type="text" formControlName="name" />
+    </label>
+    <label for="surname"
+      ><span> Surname: </span>
+      <input type="text" formControlName="surname" />
+    </label>
+    <label for="email"
+      ><span> Email: </span>
+      <input type="email" formControlName="email" />
+    </label>
+    <label for="password"
+      ><span> Password: </span>
+      <input type="password" formControlName="password" />
+    </label>
+
+    <button (click)="registerButton()">Register Account</button>
+    <div
+      class="form-alert"
+      *ngIf="signInForm.valid === false && signInForm.touched"
+    >
+      All fields of this form are required!
+    </div>
+  </form>
+</div>

@@ -9,8 +9,7 @@
   border-radius: 5px;
   display: flex;
   column-gap: 10px;
-
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
 }
 .result-head {
   text-align: center;
@@ -33,6 +32,21 @@
   display: flex;
   justify-content: space-between;
   width: 79%;
+}
+.result-container {
+  height: 130px;
+  overflow: hidden;
+  transition: all 500ms ease-in;
+}
+
+.result-container:hover {
+  height: 160px;
+  transition: all 500ms ease-in;
+}
+.result-footer {
+  height: 2rem;
+  text-align: center;
+  padding-top: 5px;
 }
 .query-container {
   width: 100%;

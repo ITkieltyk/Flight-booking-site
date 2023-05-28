@@ -51,23 +51,25 @@ $background-color-button-hover: rgba(146, 146, 240, 0.356);
   height: 90px;
 }
 .login-visibility-off {
-  height: 0;
+  height: 0px;
   position: absolute;
 
   right: -100px;
   top: 10px;
   opacity: 0;
   overflow: hidden;
-  transition: all 1.5s ease;
+  transition: right 1.5s ease, opacity 1.5s ease, height 2s step-end;
+  z-index: 100;
 }
 .login-visibility-on {
-  height: 200px;
+  height: 100px;
   position: absolute;
   overflow: hidden;
   right: 10%;
   top: 10px;
   opacity: 1;
-  transition: all 1s ease;
+  transition: right 1s ease, opacity 1.5s ease;
+  z-index: 100;
 }
 .right {
   position: absolute;

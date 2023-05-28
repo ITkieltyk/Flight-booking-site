@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { FlightsService } from './flights.service';
 
@@ -7,7 +7,7 @@ import { FlightsService } from './flights.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
+export class AppComponent implements AfterViewInit {
   title = 'Flight-booking';
 
   routingVariable: string = 'main-page';
@@ -16,7 +16,7 @@ export class AppComponent {
     private service2: FlightsService
   ) {}
 
-  AfterViewInit() {
+  ngAfterViewInit() {
     this.service2.flightGenerator(this.service2.simDays);
     console.log(this.service2.flights);
   }

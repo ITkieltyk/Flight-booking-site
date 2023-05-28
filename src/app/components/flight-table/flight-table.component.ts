@@ -1,9 +1,11 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
-import { BookingService } from '../booking.service';
-import { Flight } from '../flight';
-import { Bookinginput } from '../bookinginput';
-import { FlightsService } from '../flights.service';
-import { Forecast } from '../weatherInterfaces';
+import { BookingService } from '../../booking.service';
+import { Flight } from '../../flight';
+import { Bookinginput } from '../../bookinginput';
+import { FlightsService } from '../../flights.service';
+import { Forecast } from '../../weatherInterfaces';
+import { Router } from '@angular/router';
+import { LoginService } from 'src/app/login.service';
 
 @Component({
   selector: 'app-flight-table',
@@ -13,8 +15,12 @@ import { Forecast } from '../weatherInterfaces';
 export class FlightTableComponent implements OnInit, AfterViewInit {
   constructor(
     private service: BookingService,
-    private service2: FlightsService
+    private service2: FlightsService,
+    private router: Router,
+    private loginService: LoginService
   ) {}
+
+  secondLuggage: boolean = false;
   forecastTemp: number = 0;
   forecastIcon: string = './../../assets/loading.gif';
   query: Bookinginput = {
@@ -26,7 +32,34 @@ export class FlightTableComponent implements OnInit, AfterViewInit {
     takeoffDateStart: '',
     takeoffDateEnd: '',
   };
-
+  bookFlightClick(clickedFlight: Flight) {
+    console.log(
+      'Flight: ',
+      clickedFlight,
+      'xtra luggage: ',
+      this.secondLuggage
+    );
+    if (this.loginService.loginFlag) {
+      this.loginService.loggedInUser.bookedFlights.push(clickedFlight);
+      this.loginService.loggedInUser.adults = Number(
+        this.service.bookingQuery.adults
+      );
+      this.loginService.loggedInUser.children = Number(
+        this.service.bookingQuery.children
+      );
+      this.loginService.loggedInUser.newborn = Number(
+        this.service.bookingQuery.newborn
+      );
+      this.loginService.loggedInUser.secondLuggage = this.secondLuggage;
+      console.log(
+        'loggedInUser bookedflight',
+        this.loginService.loggedInUser.bookedFlights
+      );
+      this.router.navigate(['/summary']);
+    } else {
+      alert('You must be loggedIn to book a flight!');
+    }
+  }
   queryDateStart: Date = new Date();
   queryDateEnd: Date = new Date();
   filteredFlights: Flight[] = this.service2.flights;
