@@ -6,6 +6,7 @@ import { Flight } from './flight';
 // import { flightTest } from 'src/assets/test1';
 import { Bookinginput } from './bookinginput';
 import { HttpClient } from '@angular/common/http';
+import { BookedFlight } from './booked-flight';
 
 @Injectable({
   providedIn: 'root',
@@ -29,4 +30,5 @@ export class BookingService {
     const url: string = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=42a491361bd2e4afc756141d720279eb`;
     return this.http.get(url);
   }
+  bookingCache: BookedFlight | undefined = undefined;
 }

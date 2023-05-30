@@ -1,3 +1,48 @@
-<p>booking-summary works!</p>
-
-{{ bookingData }}
+<div class="summary-container" #summaryContainer>
+  <h3>Flight booking summary</h3>
+  <p>
+    <span class="summary-key">Origin:</span
+    ><span class="summary-data">
+      {{ bookingData.flight.origin.city }}
+    </span>
+  </p>
+  <p>
+    <span class="summary-key">Destination:</span
+    ><span class="summary-data">
+      {{ bookingData.flight.destination.city }}
+    </span>
+  </p>
+  <p>
+    <span class="summary-key">Take-off date and hour:</span
+    ><span class="summary-data">
+      {{ bookingData.flight.date | date : "shortDate" }}
+      {{ bookingData.flight.date | date : "shortTime" }}
+    </span>
+  </p>
+  <p>
+    <span class="summary-key">Landing time:</span
+    ><span class="summary-data">
+      {{
+        bookingData.flight.date
+          | landingtimer : bookingData.flight.durationM
+          | date : "shortTime"
+      }}
+    </span>
+  </p>
+  <p>
+    <span class="summary-key">Passengers: </span
+    ><span class="summary-data" *ngIf="bookingData.adults > 0">
+      Adults: {{ bookingData.adults }} x ${{ this.pricePerAdult }}
+    </span>
+    <span class="summary-data" *ngIf="bookingData.children > 0">
+      Children: {{ bookingData.children }} x ${{ this.pricePerChild }}
+    </span>
+    <span class="summary-data" *ngIf="bookingData.newborn > 0">
+      Newborn: {{ bookingData.newborn }} x ${{ this.pricePerNewBorn }}
+    </span>
+  </p>
+  <p>
+    <span class="summary-key"><h4>Total price:</h4></span
+    ><span class="summary-data"> ${{ this.totalPrice }} </span>
+  </p>
+</div>

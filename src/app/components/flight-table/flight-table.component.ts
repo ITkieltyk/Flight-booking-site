@@ -6,6 +6,7 @@ import { FlightsService } from '../../flights.service';
 import { Forecast } from '../../weatherInterfaces';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/login.service';
+import { BookedFlight } from 'src/app/booked-flight';
 
 @Component({
   selector: 'app-flight-table',
@@ -39,22 +40,20 @@ export class FlightTableComponent implements OnInit, AfterViewInit {
       'xtra luggage: ',
       this.secondLuggage
     );
+    let flightToBook: BookedFlight;
     if (this.loginService.loginFlag) {
-      this.loginService.loggedInUser.bookedFlights.push(clickedFlight);
-      this.loginService.loggedInUser.adults = Number(
-        this.service.bookingQuery.adults
-      );
-      this.loginService.loggedInUser.children = Number(
-        this.service.bookingQuery.children
-      );
-      this.loginService.loggedInUser.newborn = Number(
-        this.service.bookingQuery.newborn
-      );
-      this.loginService.loggedInUser.secondLuggage = this.secondLuggage;
-      console.log(
-        'loggedInUser bookedflight',
-        this.loginService.loggedInUser.bookedFlights
-      );
+      flightToBook = {
+        flight: clickedFlight,
+        adults: Number(this.service.bookingQuery.adults),
+        children: Number(this.service.bookingQuery.children),
+        newborn: Number(this.service.bookingQuery.newborn),
+        secondLuggage: this.secondLuggage,
+        seats: [],
+      };
+
+      this.service.bookingCache = flightToBook;
+
+      console.log('bookingCache', this.service.bookingCache);
       this.router.navigate(['/summary']);
     } else {
       alert('You must be loggedIn to book a flight!');

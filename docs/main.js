@@ -69,8 +69,10 @@ class AppComponent {
         this.routingVariable = 'main-page';
     }
     ngAfterViewInit() {
-        this.service2.flightGenerator(this.service2.simDays);
-        console.log(this.service2.flights);
+        if (this.service2.flights.length === 0) {
+            this.service2.flightGenerator(this.service2.simDays);
+            console.log(this.service2.flights);
+        }
     }
 }
 AppComponent.ɵfac = function AppComponent_Factory(t) { return new (t || AppComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_4__.Router), _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdirectiveInject"](_flights_service__WEBPACK_IMPORTED_MODULE_0__.FlightsService)); };
@@ -190,6 +192,7 @@ class BookingService {
             takeoffDateStart: '',
             takeoffDateEnd: '',
         };
+        this.bookingCache = undefined;
     }
     getForecast(city) {
         const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=42a491361bd2e4afc756141d720279eb`;
@@ -212,31 +215,131 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "BookingSummaryComponent": () => (/* binding */ BookingSummaryComponent)
 /* harmony export */ });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ 4650);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ 4650);
 /* harmony import */ var src_app_login_service__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! src/app/login.service */ 5619);
+/* harmony import */ var src_app_booking_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! src/app/booking.service */ 7877);
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common */ 6895);
+/* harmony import */ var _landingtimer_pipe__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../landingtimer.pipe */ 4249);
 
 
+
+
+
+function BookingSummaryComponent_span_31_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "span", 3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const ctx_r1 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate2"](" Adults: ", ctx_r1.bookingData.adults, " x $", ctx_r1.pricePerAdult, " ");
+} }
+function BookingSummaryComponent_span_32_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "span", 3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const ctx_r2 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate2"](" Children: ", ctx_r2.bookingData.children, " x $", ctx_r2.pricePerChild, " ");
+} }
+function BookingSummaryComponent_span_33_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "span", 3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const ctx_r3 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate2"](" Newborn: ", ctx_r3.bookingData.newborn, " x $", ctx_r3.pricePerNewBorn, " ");
+} }
 class BookingSummaryComponent {
-    constructor(loginService) {
+    constructor(loginService, bookingService) {
         this.loginService = loginService;
-        this.bookingData = '';
+        this.bookingService = bookingService;
+        this.bookingData = {};
+        this.pricePerAdult = null;
+        this.pricePerChild = null;
+        this.pricePerNewBorn = null;
+        this.totalPrice = null;
     }
     ngOnInit() {
-        if (this.loginService.loggedInUser.bookedFlights !== undefined)
-            this.bookingData =
-                this.loginService.loggedInUser.bookedFlights[0].flightNumber;
+        if (this.bookingService.bookingCache !== undefined) {
+            this.bookingData = this.bookingService.bookingCache;
+            this.pricePerAdult = this.bookingData.flight.flightPrice;
+            this.pricePerChild = Math.floor(this.pricePerAdult * 0.66);
+            this.pricePerNewBorn = 25;
+            this.totalPrice =
+                this.pricePerAdult * this.bookingData.adults +
+                    this.pricePerChild * this.bookingData.children +
+                    this.pricePerNewBorn * this.bookingData.newborn;
+        }
     }
+    ngAfterViewInit() { }
 }
-BookingSummaryComponent.ɵfac = function BookingSummaryComponent_Factory(t) { return new (t || BookingSummaryComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](src_app_login_service__WEBPACK_IMPORTED_MODULE_0__.LoginService)); };
-BookingSummaryComponent.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineComponent"]({ type: BookingSummaryComponent, selectors: [["app-booking-summary"]], decls: 3, vars: 1, template: function BookingSummaryComponent_Template(rf, ctx) { if (rf & 1) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "p");
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1, "booking-summary works!");
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](2);
+BookingSummaryComponent.ɵfac = function BookingSummaryComponent_Factory(t) { return new (t || BookingSummaryComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdirectiveInject"](src_app_login_service__WEBPACK_IMPORTED_MODULE_0__.LoginService), _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdirectiveInject"](src_app_booking_service__WEBPACK_IMPORTED_MODULE_1__.BookingService)); };
+BookingSummaryComponent.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdefineComponent"]({ type: BookingSummaryComponent, selectors: [["app-booking-summary"]], decls: 40, vars: 21, consts: [[1, "summary-container"], ["summaryContainer", ""], [1, "summary-key"], [1, "summary-data"], ["class", "summary-data", 4, "ngIf"]], template: function BookingSummaryComponent_Template(rf, ctx) { if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "div", 0, 1)(2, "h3");
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](3, "Flight booking summary");
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](4, "p")(5, "span", 2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](6, "Origin:");
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](7, "span", 3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](8);
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()();
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](9, "p")(10, "span", 2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](11, "Destination:");
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](12, "span", 3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](13);
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()();
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](14, "p")(15, "span", 2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](16, "Take-off date and hour:");
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](17, "span", 3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](18);
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵpipe"](19, "date");
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵpipe"](20, "date");
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()();
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](21, "p")(22, "span", 2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](23, "Landing time:");
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](24, "span", 3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](25);
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵpipe"](26, "date");
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵpipe"](27, "landingtimer");
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()();
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](28, "p")(29, "span", 2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](30, "Passengers: ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](31, BookingSummaryComponent_span_31_Template, 2, 2, "span", 4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](32, BookingSummaryComponent_span_32_Template, 2, 2, "span", 4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](33, BookingSummaryComponent_span_33_Template, 2, 2, "span", 4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](34, "p")(35, "span", 2)(36, "h4");
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](37, "Total price:");
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()();
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](38, "span", 3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](39);
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()()();
     } if (rf & 2) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate1"](" ", ctx.bookingData, "\n");
-    } } });
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](8);
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate1"](" ", ctx.bookingData.flight.origin.city, " ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](5);
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate1"](" ", ctx.bookingData.flight.destination.city, " ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](5);
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate2"](" ", _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵpipeBind2"](19, 9, ctx.bookingData.flight.date, "shortDate"), " ", _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵpipeBind2"](20, 12, ctx.bookingData.flight.date, "shortTime"), " ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](7);
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate1"](" ", _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵpipeBind2"](26, 15, _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵpipeBind2"](27, 18, ctx.bookingData.flight.date, ctx.bookingData.flight.durationM), "shortTime"), " ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("ngIf", ctx.bookingData.adults > 0);
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("ngIf", ctx.bookingData.children > 0);
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("ngIf", ctx.bookingData.newborn > 0);
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate1"](" $", ctx.totalPrice, " ");
+    } }, dependencies: [_angular_common__WEBPACK_IMPORTED_MODULE_4__.NgIf, _angular_common__WEBPACK_IMPORTED_MODULE_4__.DatePipe, _landingtimer_pipe__WEBPACK_IMPORTED_MODULE_2__.LandingtimerPipe], styles: ["*[_ngcontent-%COMP%] {\n  box-sizing: border-box;\n}\n\nh3[_ngcontent-%COMP%] {\n  text-align: center;\n}\n\n.summary-container[_ngcontent-%COMP%] {\n  border: 2px solid blue;\n  border-radius: 5px;\n  border-top-right-radius: 20px;\n  border-bottom-left-radius: 20px;\n  padding: 10px;\n  margin: 10px auto;\n  width: -moz-fit-content;\n  width: fit-content;\n}\n\n.summary-container[_ngcontent-%COMP%]   p[_ngcontent-%COMP%] {\n  display: flex;\n  flex-wrap: nowrap;\n  justify-content: space-between;\n}\n\n.summary-key[_ngcontent-%COMP%] {\n  font-size: 1em;\n  font-weight: 500;\n  text-align: right;\n  width: 50%;\n  margin: 2px 5px;\n}\n\n.summary-data[_ngcontent-%COMP%] {\n  font-size: 1em;\n  font-weight: 500;\n  text-align: left;\n  width: 50%;\n  margin: 2px 5px;\n}"] });
 
 
 /***/ }),
@@ -464,8 +567,10 @@ function FlightTableComponent_div_27_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementEnd"]()();
 } }
 function FlightTableComponent_div_28_Template(rf, ctx) { if (rf & 1) {
-    const _r5 = _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵgetCurrentView"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementStart"](0, "div", 16)(1, "div", 17);
+    const _r6 = _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementStart"](0, "div", 16);
+    _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵlistener"]("click", function FlightTableComponent_div_28_Template_div_click_0_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵrestoreView"](_r6); const _r4 = _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵreference"](35); _r4.classList.toggle("result-footer-hidden"); return _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵresetView"](_r4.classList.toggle("result-footer-visible")); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementStart"](1, "div", 17);
     _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵtext"](2);
     _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵpipe"](3, "date");
     _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵpipe"](4, "currency");
@@ -501,13 +606,13 @@ function FlightTableComponent_div_28_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵpipe"](32, "date");
     _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵpipe"](33, "landingtimer");
     _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementEnd"]()()()();
-    _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementStart"](34, "div", 23)(35, "input", 24);
-    _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵlistener"]("ngModelChange", function FlightTableComponent_div_28_Template_input_ngModelChange_35_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵrestoreView"](_r5); const ctx_r4 = _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵnextContext"](); return _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵresetView"](ctx_r4.secondLuggage = $event); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementStart"](34, "div", 23, 24)(36, "input", 25);
+    _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵlistener"]("ngModelChange", function FlightTableComponent_div_28_Template_input_ngModelChange_36_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵrestoreView"](_r6); const ctx_r7 = _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵnextContext"](); return _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵresetView"](ctx_r7.secondLuggage = $event); });
     _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵtext"](36, "Additional piece of luggage (20kg) ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementStart"](37, "button", 25);
-    _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵlistener"]("click", function FlightTableComponent_div_28_Template_button_click_37_listener() { const restoredCtx = _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵrestoreView"](_r5); const flug_r2 = restoredCtx.$implicit; const ctx_r6 = _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵnextContext"](); return _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵresetView"](ctx_r6.bookFlightClick(flug_r2)); });
-    _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵtext"](38, " Book this flight! ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵtext"](37, "Additional piece of luggage (20kg) ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementStart"](38, "button", 26);
+    _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵlistener"]("click", function FlightTableComponent_div_28_Template_button_click_38_listener() { const restoredCtx = _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵrestoreView"](_r6); const flug_r2 = restoredCtx.$implicit; const ctx_r8 = _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵnextContext"](); return _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵresetView"](ctx_r8.bookFlightClick(flug_r2)); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵtext"](39, " Book this flight! ");
     _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementEnd"]()()();
 } if (rf & 2) {
     const flug_r2 = ctx.$implicit;
@@ -530,7 +635,7 @@ function FlightTableComponent_div_28_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵtextInterpolate2"]("", flug_r2.destination.city, ", ", flug_r2.destination.country, "");
     _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵadvance"](2);
     _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵtextInterpolate1"](" ", _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵpipeBind2"](32, 24, _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵpipeBind2"](33, 27, flug_r2.date, flug_r2.durationM), "shortTime"), " ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵadvance"](4);
+    _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵadvance"](5);
     _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵproperty"]("ngModel", ctx_r1.secondLuggage);
 } }
 class FlightTableComponent {
@@ -557,13 +662,18 @@ class FlightTableComponent {
     }
     bookFlightClick(clickedFlight) {
         console.log('Flight: ', clickedFlight, 'xtra luggage: ', this.secondLuggage);
+        let flightToBook;
         if (this.loginService.loginFlag) {
-            this.loginService.loggedInUser.bookedFlights.push(clickedFlight);
-            this.loginService.loggedInUser.adults = Number(this.service.bookingQuery.adults);
-            this.loginService.loggedInUser.children = Number(this.service.bookingQuery.children);
-            this.loginService.loggedInUser.newborn = Number(this.service.bookingQuery.newborn);
-            this.loginService.loggedInUser.secondLuggage = this.secondLuggage;
-            console.log('loggedInUser bookedflight', this.loginService.loggedInUser.bookedFlights);
+            flightToBook = {
+                flight: clickedFlight,
+                adults: Number(this.service.bookingQuery.adults),
+                children: Number(this.service.bookingQuery.children),
+                newborn: Number(this.service.bookingQuery.newborn),
+                secondLuggage: this.secondLuggage,
+                seats: [],
+            };
+            this.service.bookingCache = flightToBook;
+            console.log('bookingCache', this.service.bookingCache);
             this.router.navigate(['/summary']);
         }
         else {
@@ -591,7 +701,7 @@ class FlightTableComponent {
     }
 }
 FlightTableComponent.ɵfac = function FlightTableComponent_Factory(t) { return new (t || FlightTableComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵdirectiveInject"](_booking_service__WEBPACK_IMPORTED_MODULE_0__.BookingService), _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵdirectiveInject"](_flights_service__WEBPACK_IMPORTED_MODULE_1__.FlightsService), _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_6__.Router), _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵdirectiveInject"](src_app_login_service__WEBPACK_IMPORTED_MODULE_2__.LoginService)); };
-FlightTableComponent.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵdefineComponent"]({ type: FlightTableComponent, selectors: [["app-flight-table"]], decls: 29, vars: 11, consts: [[1, "container"], [1, "query-container"], [1, "query-data"], [1, "grid-col-1", "sm-grid-col-1-2"], [1, "grid-col-2", "sm-grid-col-1"], [1, "grid-col-3", "sm-grid-col-2"], [1, "grid-col-1", "sm-grid-col-1"], [1, "grid-col-2", "sm-grid-col-2"], [1, "grid-col-3", "sm-grid-col-1-2"], [1, "query-weather"], ["alt", "ForecastImage", 2, "height", "3rem", 3, "src"], [1, "results"], ["class", "result", 4, "ngIf"], ["class", "result-container", 4, "ngFor", "ngForOf"], [1, "result"], [2, "margin", "5px auto"], [1, "result-container"], [1, "result-head"], [1, "vertical-center", "result-left"], ["alt", "", 2, "height", "40px", 3, "src"], [1, "result-flightdata"], [1, "vertical-center"], ["src", "assets/plane-icon.jpg", "onerror", "", "alt", "", 2, "height", "30px"], [1, "result-footer"], ["type", "checkbox", "name", "luggage", "id", "luggage", 3, "ngModel", "ngModelChange"], [1, "button", 3, "click"]], template: function FlightTableComponent_Template(rf, ctx) { if (rf & 1) {
+FlightTableComponent.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵdefineComponent"]({ type: FlightTableComponent, selectors: [["app-flight-table"]], decls: 29, vars: 11, consts: [[1, "container"], [1, "query-container"], [1, "query-data"], [1, "grid-col-1", "sm-grid-col-1-2"], [1, "grid-col-2", "sm-grid-col-1"], [1, "grid-col-3", "sm-grid-col-2"], [1, "grid-col-1", "sm-grid-col-1"], [1, "grid-col-2", "sm-grid-col-2"], [1, "grid-col-3", "sm-grid-col-1-2"], [1, "query-weather"], ["alt", "ForecastImage", 2, "height", "3rem", 3, "src"], [1, "results"], ["class", "result", 4, "ngIf"], ["class", "result-container", 3, "click", 4, "ngFor", "ngForOf"], [1, "result"], [2, "margin", "5px auto"], [1, "result-container", 3, "click"], [1, "result-head"], [1, "vertical-center", "result-left"], ["alt", "", 2, "height", "40px", 3, "src"], [1, "result-flightdata"], [1, "vertical-center"], ["src", "assets/plane-icon.jpg", "onerror", "", "alt", "", 2, "height", "30px"], [1, "result-footer-hidden"], ["footer", ""], ["type", "checkbox", "name", "luggage", "id", "luggage", 3, "ngModel", "ngModelChange"], [1, "button", 3, "click"]], template: function FlightTableComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementStart"](0, "div", 0)(1, "div", 1)(2, "div", 2)(3, "h3", 3);
         _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵtext"](4, "Search parameters:");
         _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementEnd"]();
@@ -627,7 +737,7 @@ FlightTableComponent.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODUL
         _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementEnd"]()()();
         _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementStart"](26, "div", 11);
         _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵtemplate"](27, FlightTableComponent_div_27_Template, 3, 0, "div", 12);
-        _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵtemplate"](28, FlightTableComponent_div_28_Template, 39, 30, "div", 13);
+        _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵtemplate"](28, FlightTableComponent_div_28_Template, 40, 30, "div", 13);
         _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementEnd"]()();
     } if (rf & 2) {
         _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵadvance"](6);
@@ -652,7 +762,7 @@ FlightTableComponent.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODUL
         _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵproperty"]("ngIf", ctx.filteredFlights.length === 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵadvance"](1);
         _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵproperty"]("ngForOf", ctx.filteredFlights);
-    } }, dependencies: [_angular_common__WEBPACK_IMPORTED_MODULE_7__.NgForOf, _angular_common__WEBPACK_IMPORTED_MODULE_7__.NgIf, _angular_forms__WEBPACK_IMPORTED_MODULE_8__.CheckboxControlValueAccessor, _angular_forms__WEBPACK_IMPORTED_MODULE_8__.NgControlStatus, _angular_forms__WEBPACK_IMPORTED_MODULE_8__.NgModel, _angular_common__WEBPACK_IMPORTED_MODULE_7__.CurrencyPipe, _angular_common__WEBPACK_IMPORTED_MODULE_7__.DatePipe, _duration_pipe__WEBPACK_IMPORTED_MODULE_3__.DurationPipe, _landingtimer_pipe__WEBPACK_IMPORTED_MODULE_4__.LandingtimerPipe], styles: ["[_ngcontent-%COMP%]:root, *[_ngcontent-%COMP%] {\n  box-sizing: border-box;\n}\n\n.result[_ngcontent-%COMP%] {\n  border: 2px blue solid;\n  margin: 10px auto;\n  padding: 5px;\n  border-radius: 5px;\n  display: flex;\n  column-gap: 10px;\n  flex-wrap: wrap;\n}\n\n.result-head[_ngcontent-%COMP%] {\n  text-align: center;\n}\n\n.results[_ngcontent-%COMP%] {\n  width: 100%;\n  padding: 0 10px;\n  margin: 0 auto;\n  margin-bottom: 100px;\n}\n\n.result-left[_ngcontent-%COMP%] {\n  width: 19%;\n}\n\n.result-left[_ngcontent-%COMP%]   p[_ngcontent-%COMP%] {\n  text-align: center;\n}\n\n.result-flightdata[_ngcontent-%COMP%] {\n  text-align: center;\n  column-gap: 1%;\n  display: flex;\n  justify-content: space-between;\n  width: 79%;\n}\n\n.result-container[_ngcontent-%COMP%] {\n  height: 130px;\n  overflow: hidden;\n  transition: all 500ms ease-in;\n}\n\n.result-container[_ngcontent-%COMP%]:hover {\n  height: 160px;\n  transition: all 500ms ease-in;\n}\n\n.result-footer[_ngcontent-%COMP%] {\n  height: 2rem;\n  text-align: center;\n  padding-top: 5px;\n}\n\n.query-container[_ngcontent-%COMP%] {\n  width: 100%;\n  padding: 10px;\n  margin: 0 auto;\n  margin-top: 15px;\n  display: flex;\n  gap: 1%;\n}\n\n.container[_ngcontent-%COMP%] {\n  display: flex;\n  flex-wrap: wrap;\n  flex-direction: column;\n}\n\n.query-data[_ngcontent-%COMP%] {\n  width: 88%;\n  border: 2px blue solid;\n  border-radius: 5px;\n  padding: 5px;\n  padding-bottom: 15px;\n  display: grid;\n  gap: 3%;\n  grid-template-columns: 1tr 1tr 1tr;\n  word-wrap: normal;\n}\n\n.query-weather[_ngcontent-%COMP%] {\n  width: 12%;\n  text-align: center;\n  justify-content: center;\n  align-items: center;\n  padding: 5px;\n  display: flex;\n  flex-direction: column;\n}\n\n.grid-col-1[_ngcontent-%COMP%] {\n  grid-column: 1;\n}\n\n.grid-col-2[_ngcontent-%COMP%] {\n  grid-column: 2;\n}\n\n.grid-col-3[_ngcontent-%COMP%] {\n  grid-column: 3;\n}\n\n.vertical-center[_ngcontent-%COMP%] {\n  align-items: center;\n  display: flex;\n  justify-content: center;\n  flex-direction: column;\n}\n\n@media screen and (max-width: 768px) {\n  .grid-col-1[_ngcontent-%COMP%] {\n    grid-column: unset;\n  }\n  .grid-col-2[_ngcontent-%COMP%] {\n    grid-column: unset;\n  }\n  .grid-col-3[_ngcontent-%COMP%] {\n    grid-column: unset;\n  }\n  .sm-grid-col-1[_ngcontent-%COMP%] {\n    grid-column: 1;\n  }\n  .sm-grid-col-1-2[_ngcontent-%COMP%] {\n    grid-column: 1/span 2;\n  }\n  .sm-grid-col-2[_ngcontent-%COMP%] {\n    grid-column: 2;\n  }\n  .query-weather[_ngcontent-%COMP%] {\n    width: -moz-fit-content;\n    width: fit-content;\n  }\n  .query-data[_ngcontent-%COMP%] {\n    width: max-content;\n  }\n}"] });
+    } }, dependencies: [_angular_common__WEBPACK_IMPORTED_MODULE_7__.NgForOf, _angular_common__WEBPACK_IMPORTED_MODULE_7__.NgIf, _angular_forms__WEBPACK_IMPORTED_MODULE_8__.CheckboxControlValueAccessor, _angular_forms__WEBPACK_IMPORTED_MODULE_8__.NgControlStatus, _angular_forms__WEBPACK_IMPORTED_MODULE_8__.NgModel, _angular_common__WEBPACK_IMPORTED_MODULE_7__.CurrencyPipe, _angular_common__WEBPACK_IMPORTED_MODULE_7__.DatePipe, _duration_pipe__WEBPACK_IMPORTED_MODULE_3__.DurationPipe, _landingtimer_pipe__WEBPACK_IMPORTED_MODULE_4__.LandingtimerPipe], styles: ["[_ngcontent-%COMP%]:root, *[_ngcontent-%COMP%] {\n  box-sizing: border-box;\n}\n\n.result[_ngcontent-%COMP%] {\n  border: 2px blue solid;\n  margin: 10px auto;\n  padding: 5px;\n  border-radius: 5px;\n  display: flex;\n  column-gap: 5px;\n  flex-wrap: wrap;\n}\n\n.result-head[_ngcontent-%COMP%] {\n  text-align: center;\n}\n\n.results[_ngcontent-%COMP%] {\n  width: 100%;\n  padding: 0 10px;\n  margin: 0 auto;\n  margin-bottom: 100px;\n}\n\n.result-left[_ngcontent-%COMP%] {\n  width: 19%;\n}\n\n.result-left[_ngcontent-%COMP%]   p[_ngcontent-%COMP%] {\n  text-align: center;\n}\n\n.result-flightdata[_ngcontent-%COMP%] {\n  text-align: center;\n  column-gap: 1%;\n  display: flex;\n  justify-content: space-between;\n  width: 79%;\n}\n\n.result-container[_ngcontent-%COMP%] {\n  overflow: hidden;\n}\n\n.result-footer-hidden[_ngcontent-%COMP%] {\n  height: 0;\n  text-align: center;\n  padding-top: 5px;\n  visibility: collapse;\n  transition: all 500ms ease-in;\n}\n\n.result-footer-visible[_ngcontent-%COMP%] {\n  height: 2rem;\n  text-align: center;\n  padding-top: 5px;\n  visibility: visible;\n  transition: all 500ms ease-in;\n}\n\n.query-container[_ngcontent-%COMP%] {\n  width: 100%;\n  padding: 10px;\n  margin: 0 auto;\n  margin-top: 15px;\n  display: flex;\n  gap: 1%;\n}\n\n.container[_ngcontent-%COMP%] {\n  display: flex;\n  flex-wrap: wrap;\n  flex-direction: column;\n}\n\n.query-data[_ngcontent-%COMP%] {\n  width: 88%;\n  border: 2px blue solid;\n  border-radius: 5px;\n  padding: 5px;\n  padding-bottom: 15px;\n  display: grid;\n  gap: 3%;\n  grid-template-columns: 1tr 1tr 1tr;\n  word-wrap: normal;\n}\n\n.query-weather[_ngcontent-%COMP%] {\n  width: 12%;\n  text-align: center;\n  justify-content: center;\n  align-items: center;\n  padding: 5px;\n  display: flex;\n  flex-direction: column;\n}\n\n.grid-col-1[_ngcontent-%COMP%] {\n  grid-column: 1;\n}\n\n.grid-col-2[_ngcontent-%COMP%] {\n  grid-column: 2;\n}\n\n.grid-col-3[_ngcontent-%COMP%] {\n  grid-column: 3;\n}\n\n.vertical-center[_ngcontent-%COMP%] {\n  align-items: center;\n  display: flex;\n  justify-content: center;\n  flex-direction: column;\n}\n\n@media screen and (max-width: 768px) {\n  .grid-col-1[_ngcontent-%COMP%] {\n    grid-column: unset;\n  }\n  .grid-col-2[_ngcontent-%COMP%] {\n    grid-column: unset;\n  }\n  .grid-col-3[_ngcontent-%COMP%] {\n    grid-column: unset;\n  }\n  .sm-grid-col-1[_ngcontent-%COMP%] {\n    grid-column: 1;\n  }\n  .sm-grid-col-1-2[_ngcontent-%COMP%] {\n    grid-column: 1/span 2;\n  }\n  .sm-grid-col-2[_ngcontent-%COMP%] {\n    grid-column: 2;\n  }\n  .query-weather[_ngcontent-%COMP%] {\n    width: -moz-fit-content;\n    width: fit-content;\n  }\n  .query-data[_ngcontent-%COMP%] {\n    width: max-content;\n  }\n}"] });
 
 
 /***/ }),

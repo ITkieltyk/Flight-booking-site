@@ -27,6 +27,10 @@
     <div
       class="result-container"
       *ngFor="let flug of filteredFlights; let i = index"
+      (click)="
+        footer.classList.toggle('result-footer-hidden');
+        footer.classList.toggle('result-footer-visible')
+      "
     >
       <div class="result-head">
         {{ flug.date | date : "shortDate" }}
@@ -65,7 +69,7 @@
           </div>
         </div>
       </div>
-      <div class="result-footer">
+      <div class="result-footer-hidden" #footer>
         <input
           type="checkbox"
           [(ngModel)]="secondLuggage"

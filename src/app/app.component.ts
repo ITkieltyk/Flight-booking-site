@@ -17,7 +17,9 @@ export class AppComponent implements AfterViewInit {
   ) {}
 
   ngAfterViewInit() {
-    this.service2.flightGenerator(this.service2.simDays);
-    console.log(this.service2.flights);
+    if (this.service2.flights.length === 0) {
+      this.service2.flightGenerator(this.service2.simDays);
+      console.log(this.service2.flights);
+    }
   }
 }

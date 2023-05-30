@@ -8,7 +8,7 @@
   padding: 5px;
   border-radius: 5px;
   display: flex;
-  column-gap: 10px;
+  column-gap: 5px;
   flex-wrap: wrap;
 }
 .result-head {
@@ -34,19 +34,33 @@
   width: 79%;
 }
 .result-container {
-  height: 130px;
+  // height: calc(fit-content() - 30px);
   overflow: hidden;
-  transition: all 500ms ease-in;
+  // transition: all 500ms ease-in;
 }
 
-.result-container:hover {
-  height: 160px;
+// .result-container:hover {
+//   height: fit-content;
+//   transition: all 500ms ease-in;
+// }
+// .result-footer {
+//   height: 2rem;
+//   text-align: center;
+//   padding-top: 5px;
+// }
+.result-footer-hidden {
+  height: 0;
+  text-align: center;
+  padding-top: 5px;
+  visibility: collapse;
   transition: all 500ms ease-in;
 }
-.result-footer {
+.result-footer-visible {
   height: 2rem;
   text-align: center;
   padding-top: 5px;
+  visibility: visible;
+  transition: all 500ms ease-in;
 }
 .query-container {
   width: 100%;
