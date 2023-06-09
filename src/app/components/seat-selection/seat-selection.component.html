@@ -1,0 +1,17 @@
+<div class="plane" style="border: 1px solid black">
+  <div class="buttons-wrapper">
+    <button (click)="saveSeats()" class="small-button">
+      Save seats selection
+    </button>
+    <button class="small-button" (click)="cancelSeats()">
+      Cancel seat selection
+    </button>
+  </div>
+  <ng-container *ngFor="let row of seatRows; index as i">
+    <ng-container *ngFor="let column of seatColumns">
+      <button class="seat" [ngClass]="column" (click)="seatSelect($event)">
+        {{ row }}{{ column }}
+      </button>
+    </ng-container>
+  </ng-container>
+</div>

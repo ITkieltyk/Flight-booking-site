@@ -27,16 +27,18 @@
     <div
       class="result-container"
       *ngFor="let flug of filteredFlights; let i = index"
-      (click)="
-        footer.classList.toggle('result-footer-hidden');
-        footer.classList.toggle('result-footer-visible')
-      "
     >
       <div class="result-head">
         {{ flug.date | date : "shortDate" }}
         {{ flug.flightPrice | currency : "USD" }}
       </div>
-      <div class="result">
+      <div
+        class="result"
+        (click)="
+          footer.classList.toggle('result-footer-hidden');
+          footer.classList.toggle('result-footer-visible')
+        "
+      >
         <div class="vertical-center result-left">
           <p><small>Operated by:</small></p>
           <p>{{ flug.company.name }}</p>
@@ -76,7 +78,7 @@
           name="luggage"
           id="luggage"
         />Additional piece of luggage (20kg)
-        <button class="button" (click)="bookFlightClick(flug)">
+        <button class="small-button" (click)="bookFlightClick(flug)">
           Book this flight!
         </button>
       </div>

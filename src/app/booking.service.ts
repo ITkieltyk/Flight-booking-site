@@ -30,5 +30,5 @@ export class BookingService {
     const url: string = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=42a491361bd2e4afc756141d720279eb`;
     return this.http.get(url);
   }
-  bookingCache: BookedFlight | undefined = undefined;
+  bookingCache: BookedFlight = {} as BookedFlight;
 }

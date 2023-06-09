@@ -17,6 +17,7 @@ import { LandingtimerPipe } from './landingtimer.pipe';
 import { RegisterComponent } from './components/register/register.component';
 import { BookingSummaryComponent } from './components/booking-summary/booking-summary.component';
 import { LoginService } from './login.service';
+import { SeatSelectionComponent } from './components/seat-selection/seat-selection.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { LoginService } from './login.service';
     LandingtimerPipe,
     RegisterComponent,
     BookingSummaryComponent,
+    SeatSelectionComponent,
   ],
   imports: [
     BrowserModule,

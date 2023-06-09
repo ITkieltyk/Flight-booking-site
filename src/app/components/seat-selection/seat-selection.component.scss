@@ -1,0 +1,83 @@
+* {
+  box-sizing: border-box;
+}
+
+.seat {
+  height: 2rem;
+  width: 100%;
+  background-color: rgb(1, 137, 1);
+  cursor: pointer;
+  font-size: 0.8rem;
+  border-radius: 5%;
+}
+.seat-selected {
+  background-color: rgb(100, 251, 100);
+  border: 1px rgb(0, 88, 0);
+}
+.plane {
+  display: grid;
+  grid-template-columns: 12% 12% 12% 12% 12% 12% 12%;
+  width: min(500px, 100%);
+  column-gap: 1%;
+  row-gap: 5px;
+  margin: 10px auto;
+  margin-bottom: 15vh;
+  padding: 10px;
+
+  justify-content: space-between;
+  // border: 1px solid black;
+  background-color: rgba(255, 255, 255, 0.578);
+  overflow: overlay;
+  height: 100%;
+  border-radius: 10px;
+  box-shadow: 0 0 3px 3px rgba(112, 99, 99, 0.513);
+}
+
+.A {
+  grid-column: 1;
+}
+.B {
+  grid-column: 2;
+}
+.C {
+  grid-column: 3;
+}
+.D {
+  grid-column: 5;
+}
+.E {
+  grid-column: 6;
+}
+.F {
+  grid-column: 7;
+}
+.small-button {
+  width: fit-content;
+  margin: 10px;
+  text-align: center;
+  font-size: 1rem;
+
+  background-color: rgb(0, 0, 153);
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  box-shadow: 2px -2px 2px 2px rgb(96, 119, 148), 0 0 4px 4px rgb(228, 233, 236);
+  color: white;
+}
+
+.small-button:hover {
+  cursor: pointer;
+
+  font-size: 1.2rem;
+  background-color: rgb(128, 85, 245);
+  box-shadow: 3px -3px 3px 3px rgb(92, 123, 163), 0 0 6px 6px rgb(228, 233, 236);
+  overflow: visible;
+}
+.buttons-wrapper {
+  display: flex;
+  width: fit-content;
+  margin: 10px auto;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  grid-column: 1 / span 7;
+}
