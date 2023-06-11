@@ -13,6 +13,7 @@
 }
 .result-head {
   text-align: center;
+  font-weight: 700;
 }
 .results {
   width: 100%;
@@ -34,32 +35,28 @@
   width: 79%;
 }
 .result-container {
-  // height: calc(fit-content() - 30px);
   overflow: hidden;
-  // transition: all 500ms ease-in;
 }
 
-// .result-container:hover {
-//   height: fit-content;
-//   transition: all 500ms ease-in;
-// }
-// .result-footer {
-//   height: 2rem;
-//   text-align: center;
-//   padding-top: 5px;
-// }
 .result-footer-hidden {
   height: 0;
   text-align: center;
   padding-top: 5px;
   visibility: collapse;
+  display: flex;
+  flex-wrap: nowrap;
+  column-gap: 5px;
   transition: all 500ms ease-in;
 }
 .result-footer-visible {
-  height: 2rem;
+  height: fit-content;
   text-align: center;
   padding-top: 5px;
   visibility: visible;
+
+  display: flex;
+  flex-wrap: nowrap;
+  column-gap: 5px;
   transition: all 500ms ease-in;
 }
 .query-container {
@@ -113,7 +110,7 @@
 }
 .small-button {
   width: fit-content;
-
+  height: 2.5rem;
   text-align: center;
   font-size: 1rem;
 
@@ -131,6 +128,9 @@
   background-color: rgb(128, 85, 245);
   box-shadow: 3px -3px 3px 3px rgb(92, 123, 163), 0 0 6px 6px rgb(228, 233, 236);
   overflow: visible;
+}
+.display-block {
+  display: block;
 }
 @media screen and (max-width: 768px) {
   .grid-col-1 {
@@ -156,5 +156,16 @@
   }
   .query-data {
     width: max-content;
+  }
+  .result-footer-visible {
+    height: 4rem;
+    text-align: center;
+    padding-top: 5px;
+    visibility: visible;
+
+    display: flex;
+    flex-wrap: nowrap;
+    column-gap: 5px;
+    transition: all 500ms ease-in;
   }
 }

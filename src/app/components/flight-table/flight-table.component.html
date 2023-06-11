@@ -72,13 +72,19 @@
         </div>
       </div>
       <div class="result-footer-hidden" #footer>
-        <input
-          type="checkbox"
-          [(ngModel)]="secondLuggage"
-          name="luggage"
-          id="luggage"
-        />Additional piece of luggage (20kg)
-        <button class="small-button" (click)="bookFlightClick(flug)">
+        <label for="" class="display-block">
+          <input
+            type="checkbox"
+            [(ngModel)]="secondLuggage"
+            name="luggage"
+            id="luggage"
+          />
+          Additional piece of luggage (20kg)
+        </label>
+        <button
+          class="small-button display-block"
+          (click)="bookFlightClick(flug)"
+        >
           Book this flight!
         </button>
       </div>
