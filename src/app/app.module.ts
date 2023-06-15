@@ -18,6 +18,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { BookingSummaryComponent } from './components/booking-summary/booking-summary.component';
 import { LoginService } from './login.service';
 import { SeatSelectionComponent } from './components/seat-selection/seat-selection.component';
+import { InfoModalComponent } from './components/info-modal/info-modal.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { SeatSelectionComponent } from './components/seat-selection/seat-selecti
     RegisterComponent,
     BookingSummaryComponent,
     SeatSelectionComponent,
+    InfoModalComponent,
   ],
   imports: [
     BrowserModule,

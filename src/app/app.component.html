@@ -1,6 +1,16 @@
 <div class="site-main">
   <app-header class="header"></app-header>
-
-  <router-outlet style="z-index: -100"></router-outlet>
+  <div
+    #modalWrapper
+    class="modal-wrapper"
+    [ngClass]="this.loginService.loginFlag ? 'visible' : 'hidden'"
+  >
+    <app-info-modal
+      [inputInfo]="infoData"
+      (openClose)="modalVis($event, modalWrapper)"
+    >
+    </app-info-modal>
+  </div>
+  <router-outlet style="z-index: -101"></router-outlet>
   <app-footer class="footer"></app-footer>
 </div>

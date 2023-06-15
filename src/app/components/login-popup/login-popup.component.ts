@@ -58,8 +58,7 @@ export class LoginPopupComponent implements OnInit {
           val2.email === this.loginForm.value.login &&
           val2.password === this.loginForm.value.pass
       )[0];
-      console.log('logged in user:', this.loginServ.loggedInUser);
-      alert(`User ${this.loginServ.loggedInUser.name} logged in!`);
+
       this.openClose.emit(true);
     } else {
       alert(`Credentials incorrect!`);

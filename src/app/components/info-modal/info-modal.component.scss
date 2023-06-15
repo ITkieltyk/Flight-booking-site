@@ -1,0 +1,21 @@
+.modal-wrapper {
+  border: 1px rgb(115, 115, 220) solid;
+  border-radius: 10px;
+  box-shadow: 0 0 3px 3px rgba(4, 4, 34, 0.609);
+  position: relative;
+  padding: 10px;
+  padding-top: 20px;
+  background-color: rgba(255, 255, 255, 0.86);
+}
+.modal-wrapper p {
+  padding: 10px 0;
+}
+.close-button {
+  color: black;
+  border: 1px black solid;
+  border-radius: 3px;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  z-index: 200;
+}
