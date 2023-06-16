@@ -132,6 +132,28 @@
 .display-block {
   display: block;
 }
+
+.modal-wrapper {
+  height: 5rem;
+  width: 150px;
+  position: sticky;
+  z-index: 100;
+  padding: 10px;
+  padding-top: 15px;
+  margin: auto;
+  right: calc(50% - 75px);
+}
+
+.visible {
+  top: 15%;
+}
+
+.hidden {
+  visibility: hidden;
+  z-index: -100;
+  transition: all 1s ease;
+  top: -100px;
+}
 @media screen and (max-width: 768px) {
   .grid-col-1 {
     grid-column: unset;

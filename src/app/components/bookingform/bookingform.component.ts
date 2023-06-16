@@ -8,8 +8,8 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
-import { BookingService } from 'src/app/booking.service';
-import { FlightsService } from 'src/app/flights.service';
+import { BookingService } from 'src/app/services/booking.service';
+import { FlightsService } from 'src/app/services/flights.service';
 
 @Component({
   selector: 'app-bookingform',
@@ -57,9 +57,6 @@ export class BookingformComponent implements OnInit, AfterViewInit {
   });
 
   flightSearch() {
-    console.log(this.bookinginput.value);
-
-    // console.log(this.service2.flights);
     if (this.bookinginput.valid) {
       this.service.bookingQuery = this.bookinginput.value;
       this.router.navigate(['/search-results'], {

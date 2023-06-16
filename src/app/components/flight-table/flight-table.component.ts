@@ -1,12 +1,18 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
-import { BookingService } from '../../booking.service';
-import { Flight } from '../../flight';
-import { Bookinginput } from '../../bookinginput';
-import { FlightsService } from '../../flights.service';
-import { Forecast } from '../../weatherInterfaces';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
+import { BookingService } from '../../services/booking.service';
+import { Flight } from '../../interfaces/flight';
+import { Bookinginput } from '../../interfaces/bookinginput';
+import { FlightsService } from '../../services/flights.service';
+import { Forecast } from '../../interfaces/weatherInterfaces';
 import { Router } from '@angular/router';
-import { LoginService } from 'src/app/login.service';
-import { BookedFlight } from 'src/app/booked-flight';
+import { LoginService } from 'src/app/services/login.service';
+import { BookedFlight } from 'src/app/services/booked-flight';
 
 @Component({
   selector: 'app-flight-table',
@@ -20,7 +26,8 @@ export class FlightTableComponent implements OnInit, AfterViewInit {
     private router: Router,
     private loginService: LoginService
   ) {}
-
+  @ViewChild('modalWrapper') 'warningInfo': ElementRef;
+  loginWarning: string = 'You have to be loggedIn to book flights!';
   secondLuggage: boolean = false;
   forecastTemp: number = 0;
   forecastIcon: string = './../../assets/loading.gif';
@@ -33,13 +40,10 @@ export class FlightTableComponent implements OnInit, AfterViewInit {
     takeoffDateStart: '',
     takeoffDateEnd: '',
   };
+  modalVis(flag: boolean, el: HTMLDivElement) {
+    !flag ? el.classList.toggle('hidden') : '';
+  }
   bookFlightClick(clickedFlight: Flight) {
-    console.log(
-      'Flight: ',
-      clickedFlight,
-      'xtra luggage: ',
-      this.secondLuggage
-    );
     let flightToBook: BookedFlight;
     if (this.loginService.loginFlag) {
       flightToBook = {
@@ -53,10 +57,12 @@ export class FlightTableComponent implements OnInit, AfterViewInit {
 
       this.service.bookingCache = flightToBook;
 
-      console.log('bookingCache', this.service.bookingCache);
       this.router.navigate(['/summary']);
     } else {
-      alert('You must be loggedIn to book a flight!');
+      this.modalVis(
+        this.loginService.loginFlag,
+        this.warningInfo.nativeElement
+      );
     }
   }
   queryDateStart: Date = new Date();
@@ -82,7 +88,7 @@ export class FlightTableComponent implements OnInit, AfterViewInit {
     this.service.getForecast(this.query.destination.valueOf()).subscribe({
       next: (res: any) => {
         this.forecastTemp = Math.round((res.main.temp - 273) * 10) / 10;
-        // console.log(res);
+
         this.forecastIcon = `https://openweathermap.org/img/wn/${res.weather[0].icon}@2x.png`;
       },
     });

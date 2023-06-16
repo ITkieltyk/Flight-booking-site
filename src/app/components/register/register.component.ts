@@ -6,8 +6,8 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
-import { LoginService } from 'src/app/login.service';
-import { Person } from 'src/app/person';
+import { LoginService } from 'src/app/services/login.service';
+import { Person } from 'src/app/interfaces/person';
 
 @Component({
   selector: 'app-register',
@@ -50,8 +50,7 @@ export class RegisterComponent implements OnInit {
         bookedFlights: [],
       };
       this.regService.Users.push(UserData);
-      console.log('Users[0]', this.regService.Users[0]);
-      console.log('Form input', formValues);
+
       this.router.navigate(['/main-page']);
     }
   }

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { LoginService } from 'src/app/login.service';
+import { LoginService } from 'src/app/services/login.service';
 import { subscribeOn } from 'rxjs';
 
 @Component({

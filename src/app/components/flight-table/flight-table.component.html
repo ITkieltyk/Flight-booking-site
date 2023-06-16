@@ -1,4 +1,10 @@
 <div class="container">
+  <div class="modal-wrapper visible hidden" #modalWrapper>
+    <app-info-modal
+      [inputInfo]="loginWarning"
+      (openClose)="modalVis($event, modalWrapper)"
+    ></app-info-modal>
+  </div>
   <div class="query-container">
     <div class="query-data">
       <h3 class="grid-col-1 sm-grid-col-1-2">Search parameters:</h3>

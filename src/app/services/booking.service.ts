@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Airport } from './airport';
+import { Airport } from '../interfaces/airport';
 
 import { airports } from 'src/assets/airports';
-import { Flight } from './flight';
+import { Flight } from '../interfaces/flight';
 // import { flightTest } from 'src/assets/test1';
-import { Bookinginput } from './bookinginput';
+import { Bookinginput } from '../interfaces/bookinginput';
 import { HttpClient } from '@angular/common/http';
 import { BookedFlight } from './booked-flight';
 

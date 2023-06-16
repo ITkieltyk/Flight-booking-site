@@ -1,4 +1,4 @@
-import { Airport } from 'src/app/airport';
+import { Airport } from 'src/app/interfaces/airport';
 
 const airports: Airport[] = [
   {

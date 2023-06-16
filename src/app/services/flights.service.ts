@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Flight } from 'src/app/flight';
-import { Company } from 'src/app/company';
-import { Airport } from 'src/app/airport';
-import { airports } from '../assets/airports';
+import { Flight } from 'src/app/interfaces/flight';
+import { Company } from 'src/app/interfaces/company';
+import { Airport } from 'src/app/interfaces/airport';
+import { airports } from '../../assets/airports';
 @Injectable({
   providedIn: 'root',
 })

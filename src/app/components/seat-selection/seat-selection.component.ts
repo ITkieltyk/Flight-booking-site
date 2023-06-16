@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { BookingService } from 'src/app/booking.service';
+import { BookingService } from 'src/app/services/booking.service';
 
 @Component({
   selector: 'app-seat-selection',
@@ -26,7 +26,6 @@ export class SeatSelectionComponent implements OnInit {
         1
       );
       (event.target as HTMLButtonElement).classList.toggle('seat-selected');
-      console.log(this.selectedSeats);
     } else {
       if (
         this.selectedSeats.length <
@@ -35,7 +34,6 @@ export class SeatSelectionComponent implements OnInit {
       ) {
         (event.target as HTMLButtonElement).classList.toggle('seat-selected');
         this.selectedSeats.push((event.target as HTMLButtonElement).innerText);
-        console.log(this.selectedSeats);
       }
     }
   }

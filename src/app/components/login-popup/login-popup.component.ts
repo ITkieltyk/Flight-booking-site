@@ -6,7 +6,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
-import { LoginService } from 'src/app/login.service';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-login-popup',
@@ -38,13 +38,6 @@ export class LoginPopupComponent implements OnInit {
     this.openClose.emit(true);
   }
   logInButton() {
-    console.log(
-      'login: ',
-      this.loginForm.value.login,
-      'pass: ',
-      this.loginForm.value.pass
-    );
-    console.log('Users ', this.loginServ.Users);
     if (
       this.loginServ.Users.filter(
         (val) =>
