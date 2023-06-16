@@ -17,7 +17,7 @@ export class AppComponent implements AfterViewInit {
     private service2: FlightsService,
     public loginService: LoginService
   ) {}
-  infoData: string = 'User logged in';
+  infoData: string = `User ${this.loginService.loggedInUser.name} logged in`;
   isLogged: boolean = false;
   modalVisibility: boolean = false;
   modalVis(flag: boolean, el: HTMLDivElement) {

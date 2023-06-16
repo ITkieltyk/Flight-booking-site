@@ -45,13 +45,13 @@ export class LoginPopupComponent implements OnInit {
           val.password === this.loginForm.value.pass
       ).length !== 0
     ) {
-      this.loginServ.loginFlag = true;
       this.loginServ.loggedInUser = this.loginServ.Users.filter(
         (val2) =>
           val2.email === this.loginForm.value.login &&
           val2.password === this.loginForm.value.pass
       )[0];
 
+      this.loginServ.loginFlag = true;
       this.openClose.emit(true);
     } else {
       alert(`Credentials incorrect!`);

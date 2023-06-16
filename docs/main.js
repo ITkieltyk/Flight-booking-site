@@ -74,7 +74,7 @@ class AppComponent {
         this.loginService = loginService;
         this.title = 'Flight-booking';
         this.routingVariable = 'main-page';
-        this.infoData = 'User logged in';
+        this.infoData = `User ${this.loginService.loggedInUser.name} logged in`;
         this.isLogged = false;
         this.modalVisibility = false;
     }
@@ -103,7 +103,7 @@ AppComponent.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_5__["�
         _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵproperty"]("ngClass", ctx.loginService.loginFlag ? "visible" : "hidden");
         _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵadvance"](2);
         _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵproperty"]("inputInfo", ctx.infoData);
-    } }, dependencies: [_angular_common__WEBPACK_IMPORTED_MODULE_7__.NgClass, _angular_router__WEBPACK_IMPORTED_MODULE_6__.RouterOutlet, _components_header_header_component__WEBPACK_IMPORTED_MODULE_2__.HeaderComponent, _components_footer_footer_component__WEBPACK_IMPORTED_MODULE_3__.FooterComponent, _components_info_modal_info_modal_component__WEBPACK_IMPORTED_MODULE_4__.InfoModalComponent], styles: ["*[_ngcontent-%COMP%] {\n  box-sizing: border-box;\n  padding: 0;\n  margin: 0;\n}\n\n.site-main[_ngcontent-%COMP%] {\n  width: 100%;\n  padding: 0;\n  margin: 0;\n}\n\n.footer[_ngcontent-%COMP%] {\n  position: fixed;\n  bottom: 0;\n  width: 100%;\n  height: 10%;\n}\n\n.header[_ngcontent-%COMP%] {\n  position: sticky;\n  top: 0;\n  width: 100%;\n  margin: 0;\n}\n\n.modal-wrapper[_ngcontent-%COMP%] {\n  height: 5rem;\n  width: 150px;\n  position: absolute;\n  z-index: 100;\n  padding: 10px;\n  padding-top: 15px;\n  margin: auto;\n  right: calc(50% - 75px);\n}\n\n.visible[_ngcontent-%COMP%] {\n  top: 15%;\n}\n\n.hidden[_ngcontent-%COMP%] {\n  visibility: hidden;\n  z-index: -100;\n  transition: all 1s ease;\n  top: -100px;\n}"] });
+    } }, dependencies: [_angular_common__WEBPACK_IMPORTED_MODULE_7__.NgClass, _angular_router__WEBPACK_IMPORTED_MODULE_6__.RouterOutlet, _components_header_header_component__WEBPACK_IMPORTED_MODULE_2__.HeaderComponent, _components_footer_footer_component__WEBPACK_IMPORTED_MODULE_3__.FooterComponent, _components_info_modal_info_modal_component__WEBPACK_IMPORTED_MODULE_4__.InfoModalComponent], styles: ["*[_ngcontent-%COMP%] {\n  box-sizing: border-box;\n  padding: 0;\n  margin: 0;\n}\n\n.site-main[_ngcontent-%COMP%] {\n  width: 100%;\n  padding: 0;\n  margin: 0;\n}\n\n.footer[_ngcontent-%COMP%] {\n  position: absolute;\n  bottom: 0;\n  width: 100%;\n  height: 10%;\n}\n\n.header[_ngcontent-%COMP%] {\n  position: sticky;\n  top: 0;\n  width: 100%;\n  margin: 0;\n}\n\n.modal-wrapper[_ngcontent-%COMP%] {\n  height: 5rem;\n  width: 150px;\n  position: fixed;\n  z-index: 100;\n  padding: 10px;\n  padding-top: 15px;\n  margin: auto;\n  right: calc(50% - 75px);\n}\n\n.visible[_ngcontent-%COMP%] {\n  top: 15%;\n}\n\n.hidden[_ngcontent-%COMP%] {\n  visibility: hidden;\n  height: 0;\n  margin: 0;\n  padding: 0;\n  z-index: -100;\n  transition: all 1s ease;\n  top: -100px;\n  right: calc(50% - 75px);\n}"] });
 
 
 /***/ }),
@@ -1049,9 +1049,9 @@ class LoginPopupComponent {
     logInButton() {
         if (this.loginServ.Users.filter((val) => val.email === this.loginForm.value.login &&
             val.password === this.loginForm.value.pass).length !== 0) {
-            this.loginServ.loginFlag = true;
             this.loginServ.loggedInUser = this.loginServ.Users.filter((val2) => val2.email === this.loginForm.value.login &&
                 val2.password === this.loginForm.value.pass)[0];
+            this.loginServ.loginFlag = true;
             this.openClose.emit(true);
         }
         else {
