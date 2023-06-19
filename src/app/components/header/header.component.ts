@@ -25,6 +25,11 @@ export class HeaderComponent implements OnInit {
       this.loginClick(this.login.nativeElement);
     }
   }
+
+  // headerShrink(el: HTMLElement) {
+  //   el.classList.toggle('header-shrink');
+  // }
+
   logoHome() {
     this.router.navigate(['/main-page']);
   }

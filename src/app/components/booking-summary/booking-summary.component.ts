@@ -7,7 +7,7 @@ import {
   SimpleChanges,
   ViewChild,
 } from '@angular/core';
-import { BookedFlight } from 'src/app/services/booked-flight';
+import { BookedFlight } from 'src/app/interfaces/booked-flight';
 import { BookingService } from 'src/app/services/booking.service';
 import { LoginService } from 'src/app/services/login.service';
 import { SeatSelectionComponent } from '../seat-selection/seat-selection.component';

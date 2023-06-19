@@ -1,4 +1,4 @@
-<div class="site-main">
+<div class="site-main" #sitemain>
   <app-header class="header"></app-header>
   <div
     #modalWrapper
@@ -11,6 +11,6 @@
     >
     </app-info-modal>
   </div>
-  <router-outlet style="z-index: -101"></router-outlet>
+  <router-outlet></router-outlet>
   <app-footer class="footer"></app-footer>
 </div>

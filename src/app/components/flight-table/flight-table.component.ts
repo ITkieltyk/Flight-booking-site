@@ -12,7 +12,7 @@ import { FlightsService } from '../../services/flights.service';
 import { Forecast } from '../../interfaces/weatherInterfaces';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services/login.service';
-import { BookedFlight } from 'src/app/services/booked-flight';
+import { BookedFlight } from 'src/app/interfaces/booked-flight';
 
 @Component({
   selector: 'app-flight-table',

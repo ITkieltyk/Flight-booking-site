@@ -1,4 +1,4 @@
-import { Flight } from '../interfaces/flight';
+import { Flight } from './flight';
 
 export interface BookedFlight {
   flight: Flight;

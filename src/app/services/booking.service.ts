@@ -6,7 +6,7 @@ import { Flight } from '../interfaces/flight';
 // import { flightTest } from 'src/assets/test1';
 import { Bookinginput } from '../interfaces/bookinginput';
 import { HttpClient } from '@angular/common/http';
-import { BookedFlight } from './booked-flight';
+import { BookedFlight } from '../interfaces/booked-flight';
 
 @Injectable({
   providedIn: 'root',
