@@ -50,6 +50,10 @@ export class RegisterComponent implements OnInit {
         bookedFlights: [],
       };
       this.regService.Users.push(UserData);
+      this.regService.userToMongo(UserData).subscribe({
+        next: (data) => console.log(data),
+        error: (err) => console.log('Błąd zapisu usera: ', err),
+      });
 
       this.router.navigate(['/main-page']);
     }

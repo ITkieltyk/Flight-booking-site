@@ -7,13 +7,14 @@ import { Flight } from '../interfaces/flight';
 import { Bookinginput } from '../interfaces/bookinginput';
 import { HttpClient } from '@angular/common/http';
 import { BookedFlight } from '../interfaces/booked-flight';
+import { ReturnStatement } from '@angular/compiler';
 
 @Injectable({
   providedIn: 'root',
 })
 export class BookingService {
   airportsList: string[] = airports.map((airport, index) => airport.city);
-  // flightsList: Flight[] = flights;
+
   flightsList: Flight[] = [];
   bookingQuery: Bookinginput = {
     origin: '',
@@ -31,4 +32,9 @@ export class BookingService {
     return this.http.get(url);
   }
   bookingCache: BookedFlight = {} as BookedFlight;
+  daneServer() {
+    const server = 'http://localhost:27002/test/';
+
+    return this.http.get(server);
+  }
 }
