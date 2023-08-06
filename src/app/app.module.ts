@@ -19,6 +19,7 @@ import { BookingSummaryComponent } from './components/booking-summary/booking-su
 import { LoginService } from './services/login.service';
 import { SeatSelectionComponent } from './components/seat-selection/seat-selection.component';
 import { InfoModalComponent } from './components/info-modal/info-modal.component';
+import { UserMenuComponent } from './components/user-menu/user-menu.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { InfoModalComponent } from './components/info-modal/info-modal.component
     BookingSummaryComponent,
     SeatSelectionComponent,
     InfoModalComponent,
+    UserMenuComponent,
   ],
   imports: [
     BrowserModule,

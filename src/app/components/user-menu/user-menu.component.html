@@ -1,0 +1,23 @@
+<div class="user-page-wrapper">
+  <aside class="side-menu border">
+    <ul>
+      <li>Personal data</li>
+      <li>Flight list</li>
+      <li>Payments</li>
+      <li>Password change</li>
+    </ul>
+  </aside>
+  <div class="user-personal-data border">
+    <p>
+      Hello <span>{{ this.loginService.loggedInUser.name }}</span
+      >!
+    </p>
+    <div class="personal-data">
+      <p>
+        Name: {{ this.loginService.loggedInUser.name }}
+        {{ this.loginService.loggedInUser.surname }}
+      </p>
+      <p>E-mail: {{ this.loginService.loggedInUser.email }}</p>
+    </div>
+  </div>
+</div>

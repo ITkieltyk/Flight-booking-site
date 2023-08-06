@@ -33,6 +33,10 @@ export class HeaderComponent implements OnInit {
   logoHome() {
     this.router.navigate(['/main-page']);
   }
+  userMenu() {
+    this.router.navigate(['/user-menu']);
+  }
+
   ngOnInit(): void {
     this.userPic = this.defaultUserPic;
   }

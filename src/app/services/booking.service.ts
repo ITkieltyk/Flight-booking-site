@@ -32,9 +32,4 @@ export class BookingService {
     return this.http.get(url);
   }
   bookingCache: BookedFlight = {} as BookedFlight;
-  daneServer() {
-    const server = 'http://localhost:27002/test/';
-
-    return this.http.get(server);
-  }
 }

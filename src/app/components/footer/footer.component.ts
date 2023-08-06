@@ -11,11 +11,5 @@ export class FooterComponent implements OnInit {
 
   constructor(private bookingService: BookingService) {}
 
-  ngOnInit(): void {
-    this.bookingService.daneServer().subscribe({
-      next: (dane: any) => {
-        console.log('Dane z servera', dane.dane);
-      },
-    });
-  }
+  ngOnInit(): void {}
 }

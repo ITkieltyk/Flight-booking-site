@@ -49,9 +49,10 @@ export class RegisterComponent implements OnInit {
         password: formValues.password,
         bookedFlights: [],
       };
-      this.regService.Users.push(UserData);
+      // this.regService.Users.push(UserData);
       this.regService.userToMongo(UserData).subscribe({
-        next: (data) => console.log(data),
+        next: (data) =>
+          console.log('Dane użytkownika do zapisu na serwerze: ', data),
         error: (err) => console.log('Błąd zapisu usera: ', err),
       });
 

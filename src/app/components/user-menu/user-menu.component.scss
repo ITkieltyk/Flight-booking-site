@@ -1,0 +1,36 @@
+* {
+  box-sizing: border-box;
+}
+.border {
+  border: 2px blue solid;
+  border-radius: 5px;
+  border-bottom-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.user-page-wrapper {
+  display: grid;
+  grid-template-columns: 150px auto;
+  height: 100%;
+  width: 100%;
+  margin: 10px auto;
+  gap: 10px;
+  padding: 5px;
+}
+.side-menu {
+  grid-column: 1;
+  word-wrap: normal;
+  width: 100%;
+  padding: 5px;
+}
+.side-menu ul {
+  list-style: none;
+  padding-inline-start: 0;
+}
+.side-menu li {
+  padding: 5px;
+}
+.user-personal-data {
+  width: 100%;
+  grid-column: 2;
+  padding: 5px;
+}
