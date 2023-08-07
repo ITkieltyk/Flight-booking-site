@@ -40,6 +40,11 @@ export class LoginService {
       params,
     });
   }
+  pushFlight(user: Person) {
+    const server = 'http://localhost:27002/pushflight';
+
+    return this.http.put<DBUser>(server, user);
+  }
   // saveusers() {
   //   this.getuser().subscribe(res:
 

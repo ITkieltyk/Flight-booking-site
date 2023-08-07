@@ -62,6 +62,11 @@ export class BookingSummaryComponent implements OnInit, AfterViewInit {
     this.loginService.loggedInUser.bookedFlights.push(
       this.bookingService.bookingCache
     );
+    this.loginService.pushFlight(this.loginService.loggedInUser).subscribe({
+      next: () => console.log('Flights saved to DB'),
+      error: (error) => console.log('Error while pushing flights: ', error),
+    });
+
     alert('Flight has been pushed!');
   }
   selectSeats(el: HTMLDivElement) {
