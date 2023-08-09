@@ -1,23 +1,60 @@
 <div class="user-page-wrapper">
-  <aside class="side-menu border">
-    <ul>
-      <li>Personal data</li>
-      <li>Flight list</li>
-      <li>Payments</li>
-      <li>Password change</li>
-    </ul>
-  </aside>
-  <div class="user-personal-data border">
-    <p>
+  <div class="user-data">
+    <h2>
       Hello <span>{{ this.loginService.loggedInUser.name }}</span
       >!
-    </p>
-    <div class="personal-data">
+    </h2>
+    <div
+      class="personal-data border short"
+      (click)="toogleSize(personalData)"
+      #personalData
+    >
+      <h3>Personal data</h3>
       <p>
         Name: {{ this.loginService.loggedInUser.name }}
         {{ this.loginService.loggedInUser.surname }}
       </p>
       <p>E-mail: {{ this.loginService.loggedInUser.email }}</p>
+    </div>
+    <div class="flights border short" (click)="toogleSize(flights)" #flights>
+      <h3>Booked Flights</h3>
+      <ng-container
+        *ngIf="this.loginService.loggedInUser.bookedFlights.length === 0"
+      >
+        You have no booked flights right now. <br />
+        Book any flight to see it on this card.
+      </ng-container>
+      <ng-container
+        *ngFor="
+          let item of this.loginService.loggedInUser.bookedFlights;
+          let index
+        "
+      >
+        <div>
+          <p>
+            Flight from {{ item.flight.origin.city }} to
+            {{ item.flight.destination.city }}
+          </p>
+          <p>Take-off: {{ item.flight.date | date : "dd.MM.yy  hh:mm" }}</p>
+          <p>
+            Flight duration:
+            {{ item.flight.durationM | duration }}
+          </p>
+        </div>
+        <br />
+      </ng-container>
+    </div>
+    <div
+      class="personal-data border short"
+      (click)="toogleSize(logout)"
+      #logout
+    >
+      <h3>Log out</h3>
+      <p>
+        <button (click)="logOutUser()" class="small-button">
+          Log out current user
+        </button>
+      </p>
     </div>
   </div>
 </div>

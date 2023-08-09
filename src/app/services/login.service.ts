@@ -45,10 +45,4 @@ export class LoginService {
 
     return this.http.put<DBUser>(server, user);
   }
-  // saveusers() {
-  //   this.getuser().subscribe(res:
-
-  //   )
-
-  // }
 }

@@ -23,7 +23,25 @@ export class AppComponent implements AfterViewInit {
   modalVis(flag: boolean, el: HTMLDivElement) {
     !flag ? el.classList.toggle('hidden') : '';
   }
-
+  ngOnInit() {
+    if (localStorage.getItem('login') !== null) {
+      this.loginService
+        .getuser(
+          localStorage.getItem('login') || '',
+          localStorage.getItem('password') || ''
+        )
+        .subscribe({
+          next: (res) => {
+            console.log(res);
+            if (res.users.length) {
+              this.loginService.loggedInUser = res.users[0];
+              this.loginService.loginFlag = true;
+            }
+          },
+        });
+    }
+    console.log('On init localstorage read', localStorage.getItem('login'));
+  }
   ngAfterViewInit() {
     if (this.service2.flights.length === 0) {
       this.service2.flightGenerator(this.service2.simDays);

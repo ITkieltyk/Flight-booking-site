@@ -52,6 +52,28 @@ export class LoginPopupComponent implements OnInit {
             this.loginServ.loginFlag = true;
             this.openClose.emit(true);
             console.log(this.loginServ.loggedInUser);
+            // localStorage.setItem(
+            //   'loginData',
+            //   JSON.stringify({
+            //     login: this.loginServ.loggedInUser.email,
+            //     password: this.loginServ.loggedInUser.password,
+            //   })
+            // );
+            // console.log(
+            //   'Data from localstorage',
+            //   localStorage.getItem('login')
+            // );
+
+            localStorage.setItem('login', this.loginServ.loggedInUser.email);
+
+            localStorage.setItem(
+              'password',
+              this.loginServ.loggedInUser.password
+            );
+            console.log(
+              'Data from localstorage',
+              localStorage.getItem('login')
+            );
           } else {
             this.validCredentials = false;
             alert(`Credentials incorrect!`);
