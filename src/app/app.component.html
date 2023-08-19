@@ -2,8 +2,9 @@
   <app-header class="header"></app-header>
   <div
     #modalWrapper
+    id="modalWrapper"
     class="modal-wrapper"
-    [ngClass]="this.loginService.loginFlag ? 'visible' : 'hidden'"
+    [ngClass]="!this.loginService.loginFlag ? 'hidden' : ''"
   >
     <app-info-modal
       [inputInfo]="infoData"

@@ -45,4 +45,9 @@ export class LoginService {
 
     return this.http.put<DBUser>(server, user);
   }
+  passUpdate(user: Person) {
+    const server = 'http://localhost:27002/passupdate';
+
+    return this.http.put(server, user);
+  }
 }

@@ -25,10 +25,7 @@
         Book any flight to see it on this card.
       </ng-container>
       <ng-container
-        *ngFor="
-          let item of this.loginService.loggedInUser.bookedFlights;
-          let index
-        "
+        *ngFor="let item of this.loadedUser.bookedFlights; let index"
       >
         <div>
           <p>
@@ -40,6 +37,58 @@
             Flight duration:
             {{ item.flight.durationM | duration }}
           </p>
+
+          {{ item.flight.date | landingtimer : item.flight.durationM | date }}
+
+          <div class="result-head">
+            {{ item.flight.date | date : "shortDate" }}
+            {{ item.flight.flightPrice | currency : "USD" }}
+          </div>
+          <div class="result" t>
+            <div class="vertical-center result-left">
+              <p><small>Operated by:</small></p>
+              <p>{{ item.flight.company.name }}</p>
+              <img
+                [src]="item.flight.company.logo"
+                alt=""
+                style="height: 40px"
+              />
+            </div>
+            <div class="result-flightdata">
+              <div class="vertical-center">
+                <p>
+                  {{ item.flight.origin.city }},
+                  {{ item.flight.origin.country }}
+                </p>
+                <p>
+                  {{ item.flight.date | date : "shortTime" }}
+                </p>
+              </div>
+              <div>
+                <p>{{ item.flight.flightNumber }}</p>
+                <img
+                  src="assets/plane-icon.jpg"
+                  onerror=""
+                  style="height: 30px"
+                  alt=""
+                />
+                <p>{{ item.flight.durationM | duration }}</p>
+              </div>
+              <div class="vertical-center">
+                <p>
+                  {{ item.flight.destination.city }},
+                  {{ item.flight.destination.country }}
+                </p>
+                <p>
+                  {{
+                    item.flight.date
+                      | landingtimer : item.flight.durationM
+                      | date : "shortTime"
+                  }}
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
         <br />
       </ng-container>
@@ -50,9 +99,39 @@
       #logout
     >
       <h3>Log out</h3>
+      <br />
       <p>
         <button (click)="logOutUser()" class="small-button">
           Log out current user
+        </button>
+      </p>
+    </div>
+    <div class="personal-data border short" #passchange>
+      <h3 (click)="toogleSize(passchange)">Change password</h3>
+      <br />
+      <form [formGroup]="passwordChangeForm" action="">
+        <p>
+          <label for="oldpass">Current password: </label>
+          <input type="text" formControlName="oldPass" #oldPass />
+        </p>
+        <p>
+          <label for="newpass">New Password: </label>
+          <input type="text" formControlName="newPass" #newPass />
+        </p>
+        <p>
+          <label for="passcheck">New password check: </label>
+          <input type="text" formControlName="passCheck" #passCheck />
+        </p>
+      </form>
+      <br />
+      <p>
+        <button
+          (click)="
+            passwordChange(oldPass.value, newPass.value, passCheck.value)
+          "
+          class="small-button"
+        >
+          Change password
         </button>
       </p>
     </div>

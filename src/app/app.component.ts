@@ -1,4 +1,4 @@
-import { AfterViewInit, Component } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { FlightsService } from './services/flights.service';
 import { LoginService } from './services/login.service';
@@ -12,6 +12,8 @@ export class AppComponent implements AfterViewInit {
   title = 'Flight-booking';
 
   routingVariable: string = 'main-page';
+  @ViewChild('modalWrapper') 'modalwrapper': ElementRef<HTMLDivElement>;
+
   constructor(
     private readonly router: Router,
     private service2: FlightsService,
@@ -35,7 +37,13 @@ export class AppComponent implements AfterViewInit {
             console.log(res);
             if (res.users.length) {
               this.loginService.loggedInUser = res.users[0];
-              this.loginService.loginFlag = true;
+
+              setTimeout(() => {
+                this.loginService.loginFlag = true;
+              }, 1);
+              setTimeout(() => {
+                this.modalVis(false, this.modalwrapper.nativeElement);
+              }, 2);
             }
           },
         });

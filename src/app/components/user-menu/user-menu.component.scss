@@ -69,3 +69,44 @@ h3 {
   box-shadow: 3px -3px 3px 3px rgb(92, 123, 163), 0 0 6px 6px rgb(228, 233, 236);
   overflow: visible;
 }
+.result {
+  border: 2px blue solid;
+  margin: 10px auto;
+  padding: 5px;
+  border-radius: 5px;
+  display: flex;
+  column-gap: 5px;
+  flex-wrap: wrap;
+}
+.result-head {
+  text-align: center;
+  font-weight: 700;
+}
+.results {
+  width: 100%;
+  padding: 0 10px;
+  margin: 0 auto;
+  margin-bottom: 100px;
+}
+.result-left {
+  width: 19%;
+}
+.result-left p {
+  text-align: center;
+}
+.result-flightdata {
+  text-align: center;
+  column-gap: 1%;
+  display: flex;
+  justify-content: space-between;
+  width: 79%;
+}
+.result-container {
+  overflow: hidden;
+}
+.vertical-center {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}

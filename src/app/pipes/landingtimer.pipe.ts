@@ -4,7 +4,7 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'landingtimer',
 })
 export class LandingtimerPipe implements PipeTransform {
-  transform(value: Date, duration: number): Date {
+  transform(value: Date, duration: number, ...args: unknown[]): Date {
     value.setMinutes(value.getMinutes() + duration);
 
     return value;
