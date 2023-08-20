@@ -11,12 +11,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "AppRoutingModule": () => (/* binding */ AppRoutingModule)
 /* harmony export */ });
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ 4793);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/router */ 4793);
 /* harmony import */ var _components_homepage_homepage_component__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/homepage/homepage.component */ 8068);
 /* harmony import */ var _components_flight_table_flight_table_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/flight-table/flight-table.component */ 5349);
 /* harmony import */ var _components_register_register_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/register/register.component */ 3412);
 /* harmony import */ var _components_booking_summary_booking_summary_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/booking-summary/booking-summary.component */ 5006);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/core */ 4650);
+/* harmony import */ var _components_user_menu_user_menu_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/user-menu/user-menu.component */ 7991);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/core */ 4650);
+
 
 
 
@@ -30,13 +32,14 @@ const routes = [
     { path: 'search-results', component: _components_flight_table_flight_table_component__WEBPACK_IMPORTED_MODULE_1__.FlightTableComponent },
     { path: 'registration', component: _components_register_register_component__WEBPACK_IMPORTED_MODULE_2__.RegisterComponent },
     { path: 'summary', component: _components_booking_summary_booking_summary_component__WEBPACK_IMPORTED_MODULE_3__.BookingSummaryComponent },
+    { path: 'user-menu', component: _components_user_menu_user_menu_component__WEBPACK_IMPORTED_MODULE_4__.UserMenuComponent },
 ];
 class AppRoutingModule {
 }
 AppRoutingModule.ɵfac = function AppRoutingModule_Factory(t) { return new (t || AppRoutingModule)(); };
-AppRoutingModule.ɵmod = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵdefineNgModule"]({ type: AppRoutingModule });
-AppRoutingModule.ɵinj = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵdefineInjector"]({ imports: [_angular_router__WEBPACK_IMPORTED_MODULE_5__.RouterModule.forRoot(routes), _angular_router__WEBPACK_IMPORTED_MODULE_5__.RouterModule] });
-(function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵsetNgModuleScope"](AppRoutingModule, { imports: [_angular_router__WEBPACK_IMPORTED_MODULE_5__.RouterModule], exports: [_angular_router__WEBPACK_IMPORTED_MODULE_5__.RouterModule] }); })();
+AppRoutingModule.ɵmod = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵdefineNgModule"]({ type: AppRoutingModule });
+AppRoutingModule.ɵinj = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵdefineInjector"]({ imports: [_angular_router__WEBPACK_IMPORTED_MODULE_6__.RouterModule.forRoot(routes), _angular_router__WEBPACK_IMPORTED_MODULE_6__.RouterModule] });
+(function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵsetNgModuleScope"](AppRoutingModule, { imports: [_angular_router__WEBPACK_IMPORTED_MODULE_6__.RouterModule], exports: [_angular_router__WEBPACK_IMPORTED_MODULE_6__.RouterModule] }); })();
 
 
 /***/ }),
@@ -67,6 +70,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+const _c0 = ["modalWrapper"];
 class AppComponent {
     constructor(router, service2, loginService) {
         this.router = router;
@@ -81,6 +86,27 @@ class AppComponent {
     modalVis(flag, el) {
         !flag ? el.classList.toggle('hidden') : '';
     }
+    ngOnInit() {
+        if (localStorage.getItem('login') !== null) {
+            this.loginService
+                .getuser(localStorage.getItem('login') || '', localStorage.getItem('password') || '')
+                .subscribe({
+                next: (res) => {
+                    console.log(res);
+                    if (res.users.length) {
+                        this.loginService.loggedInUser = res.users[0];
+                        setTimeout(() => {
+                            this.loginService.loginFlag = true;
+                        }, 1);
+                        setTimeout(() => {
+                            this.modalVis(false, this.modalwrapper.nativeElement);
+                        }, 2);
+                    }
+                },
+            });
+        }
+        console.log('On init localstorage read', localStorage.getItem('login'));
+    }
     ngAfterViewInit() {
         if (this.service2.flights.length === 0) {
             this.service2.flightGenerator(this.service2.simDays);
@@ -89,7 +115,12 @@ class AppComponent {
     }
 }
 AppComponent.ɵfac = function AppComponent_Factory(t) { return new (t || AppComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_6__.Router), _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵdirectiveInject"](_services_flights_service__WEBPACK_IMPORTED_MODULE_0__.FlightsService), _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵdirectiveInject"](_services_login_service__WEBPACK_IMPORTED_MODULE_1__.LoginService)); };
-AppComponent.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵdefineComponent"]({ type: AppComponent, selectors: [["app-root"]], decls: 8, vars: 2, consts: [[1, "site-main"], ["sitemain", ""], [1, "header"], [1, "modal-wrapper", 3, "ngClass"], ["modalWrapper", ""], [3, "inputInfo", "openClose"], [1, "footer"]], template: function AppComponent_Template(rf, ctx) { if (rf & 1) {
+AppComponent.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵdefineComponent"]({ type: AppComponent, selectors: [["app-root"]], viewQuery: function AppComponent_Query(rf, ctx) { if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵviewQuery"](_c0, 5);
+    } if (rf & 2) {
+        let _t;
+        _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵloadQuery"]()) && (ctx.modalwrapper = _t.first);
+    } }, decls: 8, vars: 2, consts: [[1, "site-main"], ["sitemain", ""], [1, "header"], ["id", "modalWrapper", 1, "modal-wrapper", 3, "ngClass"], ["modalWrapper", ""], [3, "inputInfo", "openClose"], [1, "footer"]], template: function AppComponent_Template(rf, ctx) { if (rf & 1) {
         const _r2 = _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵgetCurrentView"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementStart"](0, "div", 0, 1);
         _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelement"](2, "app-header", 2);
@@ -100,7 +131,7 @@ AppComponent.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_5__["�
         _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementEnd"]();
     } if (rf & 2) {
         _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵadvance"](3);
-        _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵproperty"]("ngClass", ctx.loginService.loginFlag ? "visible" : "hidden");
+        _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵproperty"]("ngClass", !ctx.loginService.loginFlag ? "hidden" : "");
         _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵadvance"](2);
         _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵproperty"]("inputInfo", ctx.infoData);
     } }, dependencies: [_angular_common__WEBPACK_IMPORTED_MODULE_7__.NgClass, _angular_router__WEBPACK_IMPORTED_MODULE_6__.RouterOutlet, _components_header_header_component__WEBPACK_IMPORTED_MODULE_2__.HeaderComponent, _components_footer_footer_component__WEBPACK_IMPORTED_MODULE_3__.FooterComponent, _components_info_modal_info_modal_component__WEBPACK_IMPORTED_MODULE_4__.InfoModalComponent], styles: ["*[_ngcontent-%COMP%] {\n  box-sizing: border-box;\n  padding: 0;\n  margin: 0;\n}\n\n.site-main[_ngcontent-%COMP%] {\n  width: 100%;\n  padding: 0;\n  margin: 0;\n}\n\n.footer[_ngcontent-%COMP%] {\n  position: fixed;\n  bottom: 0;\n  width: 100%;\n  height: 10%;\n}\n\n.header[_ngcontent-%COMP%] {\n  position: sticky;\n  top: 0;\n  width: 100%;\n  margin: 0;\n}\n\n.modal-wrapper[_ngcontent-%COMP%] {\n  height: 5rem;\n  width: 150px;\n  position: fixed;\n  z-index: 100;\n  padding: 10px;\n  padding-top: 15px;\n  margin: auto;\n  right: calc(50% - 75px);\n}\n\n.visible[_ngcontent-%COMP%] {\n  top: 15%;\n}\n\n.hidden[_ngcontent-%COMP%] {\n  visibility: hidden;\n  height: 0;\n  margin: 0;\n  padding: 0;\n  z-index: -100;\n  transition: all 1s ease;\n  top: -100px;\n  right: calc(50% - 75px);\n}"] });
@@ -118,11 +149,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "AppModule": () => (/* binding */ AppModule)
 /* harmony export */ });
-/* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @angular/platform-browser */ 1481);
+/* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! @angular/platform-browser */ 1481);
 /* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./app-routing.module */ 158);
 /* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./app.component */ 5041);
 /* harmony import */ var _components_header_header_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/header/header.component */ 3646);
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! @angular/forms */ 4006);
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! @angular/forms */ 4006);
 /* harmony import */ var _components_footer_footer_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/footer/footer.component */ 4662);
 /* harmony import */ var _components_homepage_homepage_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/homepage/homepage.component */ 8068);
 /* harmony import */ var _components_login_popup_login_popup_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/login-popup/login-popup.component */ 2287);
@@ -131,14 +162,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _services_booking_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./services/booking.service */ 2169);
 /* harmony import */ var _pipes_duration_pipe__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./pipes/duration.pipe */ 8105);
 /* harmony import */ var _services_flights_service__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./services/flights.service */ 8223);
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! @angular/common/http */ 529);
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! @angular/common/http */ 529);
 /* harmony import */ var _pipes_landingtimer_pipe__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./pipes/landingtimer.pipe */ 9902);
 /* harmony import */ var _components_register_register_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./components/register/register.component */ 3412);
 /* harmony import */ var _components_booking_summary_booking_summary_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./components/booking-summary/booking-summary.component */ 5006);
 /* harmony import */ var _services_login_service__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./services/login.service */ 4120);
 /* harmony import */ var _components_seat_selection_seat_selection_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./components/seat-selection/seat-selection.component */ 593);
 /* harmony import */ var _components_info_modal_info_modal_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./components/info-modal/info-modal.component */ 9393);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @angular/core */ 4650);
+/* harmony import */ var _components_user_menu_user_menu_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./components/user-menu/user-menu.component */ 7991);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @angular/core */ 4650);
+
 
 
 
@@ -163,13 +196,13 @@ __webpack_require__.r(__webpack_exports__);
 class AppModule {
 }
 AppModule.ɵfac = function AppModule_Factory(t) { return new (t || AppModule)(); };
-AppModule.ɵmod = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_17__["ɵɵdefineNgModule"]({ type: AppModule, bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_1__.AppComponent] });
-AppModule.ɵinj = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_17__["ɵɵdefineInjector"]({ providers: [_services_booking_service__WEBPACK_IMPORTED_MODULE_8__.BookingService, _services_flights_service__WEBPACK_IMPORTED_MODULE_10__.FlightsService, _services_login_service__WEBPACK_IMPORTED_MODULE_14__.LoginService], imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_18__.BrowserModule,
-        _angular_common_http__WEBPACK_IMPORTED_MODULE_19__.HttpClientModule,
+AppModule.ɵmod = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_18__["ɵɵdefineNgModule"]({ type: AppModule, bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_1__.AppComponent] });
+AppModule.ɵinj = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_18__["ɵɵdefineInjector"]({ providers: [_services_booking_service__WEBPACK_IMPORTED_MODULE_8__.BookingService, _services_flights_service__WEBPACK_IMPORTED_MODULE_10__.FlightsService, _services_login_service__WEBPACK_IMPORTED_MODULE_14__.LoginService], imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_19__.BrowserModule,
+        _angular_common_http__WEBPACK_IMPORTED_MODULE_20__.HttpClientModule,
         _app_routing_module__WEBPACK_IMPORTED_MODULE_0__.AppRoutingModule,
-        _angular_forms__WEBPACK_IMPORTED_MODULE_20__.FormsModule,
-        _angular_forms__WEBPACK_IMPORTED_MODULE_20__.ReactiveFormsModule] });
-(function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_17__["ɵɵsetNgModuleScope"](AppModule, { declarations: [_app_component__WEBPACK_IMPORTED_MODULE_1__.AppComponent,
+        _angular_forms__WEBPACK_IMPORTED_MODULE_21__.FormsModule,
+        _angular_forms__WEBPACK_IMPORTED_MODULE_21__.ReactiveFormsModule] });
+(function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_18__["ɵɵsetNgModuleScope"](AppModule, { declarations: [_app_component__WEBPACK_IMPORTED_MODULE_1__.AppComponent,
         _components_header_header_component__WEBPACK_IMPORTED_MODULE_2__.HeaderComponent,
         _components_footer_footer_component__WEBPACK_IMPORTED_MODULE_3__.FooterComponent,
         _components_homepage_homepage_component__WEBPACK_IMPORTED_MODULE_4__.HomepageComponent,
@@ -181,11 +214,12 @@ AppModule.ɵinj = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_17__["ɵ�
         _components_register_register_component__WEBPACK_IMPORTED_MODULE_12__.RegisterComponent,
         _components_booking_summary_booking_summary_component__WEBPACK_IMPORTED_MODULE_13__.BookingSummaryComponent,
         _components_seat_selection_seat_selection_component__WEBPACK_IMPORTED_MODULE_15__.SeatSelectionComponent,
-        _components_info_modal_info_modal_component__WEBPACK_IMPORTED_MODULE_16__.InfoModalComponent], imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_18__.BrowserModule,
-        _angular_common_http__WEBPACK_IMPORTED_MODULE_19__.HttpClientModule,
+        _components_info_modal_info_modal_component__WEBPACK_IMPORTED_MODULE_16__.InfoModalComponent,
+        _components_user_menu_user_menu_component__WEBPACK_IMPORTED_MODULE_17__.UserMenuComponent], imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_19__.BrowserModule,
+        _angular_common_http__WEBPACK_IMPORTED_MODULE_20__.HttpClientModule,
         _app_routing_module__WEBPACK_IMPORTED_MODULE_0__.AppRoutingModule,
-        _angular_forms__WEBPACK_IMPORTED_MODULE_20__.FormsModule,
-        _angular_forms__WEBPACK_IMPORTED_MODULE_20__.ReactiveFormsModule] }); })();
+        _angular_forms__WEBPACK_IMPORTED_MODULE_21__.FormsModule,
+        _angular_forms__WEBPACK_IMPORTED_MODULE_21__.ReactiveFormsModule] }); })();
 
 
 /***/ }),
@@ -289,6 +323,10 @@ class BookingSummaryComponent {
     }
     confirmation() {
         this.loginService.loggedInUser.bookedFlights.push(this.bookingService.bookingCache);
+        this.loginService.pushFlight(this.loginService.loggedInUser).subscribe({
+            next: () => console.log('Flights saved to DB'),
+            error: (error) => console.log('Error while pushing flights: ', error),
+        });
         alert('Flight has been pushed!');
     }
     selectSeats(el) {
@@ -831,18 +869,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "FooterComponent": () => (/* binding */ FooterComponent)
 /* harmony export */ });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ 4650);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ 4650);
+/* harmony import */ var src_app_services_booking_service__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! src/app/services/booking.service */ 2169);
+
 
 class FooterComponent {
-    constructor() { }
-    ngOnInit() {
+    constructor(bookingService) {
+        this.bookingService = bookingService;
+        this.wstawka = '';
     }
+    ngOnInit() { }
 }
-FooterComponent.ɵfac = function FooterComponent_Factory(t) { return new (t || FooterComponent)(); };
-FooterComponent.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: FooterComponent, selectors: [["app-footer"]], decls: 2, vars: 0, consts: [[1, "footer"]], template: function FooterComponent_Template(rf, ctx) { if (rf & 1) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "footer", 0);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "All rights reserved");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+FooterComponent.ɵfac = function FooterComponent_Factory(t) { return new (t || FooterComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](src_app_services_booking_service__WEBPACK_IMPORTED_MODULE_0__.BookingService)); };
+FooterComponent.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineComponent"]({ type: FooterComponent, selectors: [["app-footer"]], decls: 2, vars: 0, consts: [[1, "footer"]], template: function FooterComponent_Template(rf, ctx) { if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "footer", 0);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1, "All rights reserved");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
     } }, styles: ["*[_ngcontent-%COMP%] {\n  box-sizing: border-box;\n}\n\n.header-border[_ngcontent-%COMP%] {\n  border: 2px solid rgb(228, 228, 235);\n  border-radius: 5px;\n}\n\n.footer[_ngcontent-%COMP%] {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  background-color: rgb(78, 78, 243);\n  margin: 0;\n  height: 100%;\n}\n\n.menu-button[_ngcontent-%COMP%] {\n  height: 90px;\n  width: 90px;\n  text-align: center;\n  font-size: 1rem;\n  padding: 2rem 0;\n  background-color: rgb(0, 0, 153);\n  border-top-right-radius: 10px;\n  border-bottom-left-radius: 10px;\n  box-shadow: 2px -2px 2px 2px rgb(96, 119, 148), 0 0 4px 4px rgb(228, 233, 236);\n  color: white;\n}\n\n.menu-button[_ngcontent-%COMP%]:hover {\n  cursor: pointer;\n  height: 100px;\n  width: 100px;\n  text-align: center;\n  font-size: 1.2rem;\n  padding: 2rem 0;\n  background-color: rgba(146, 146, 240, 0.356);\n  border-top-right-radius: 10px;\n  border-bottom-left-radius: 10px;\n  box-shadow: 3px -3px 3px 3px rgb(92, 123, 163), 0 0 6px 6px rgb(228, 233, 236);\n  overflow: visible;\n}"] });
 
 
@@ -894,6 +936,9 @@ class HeaderComponent {
     logoHome() {
         this.router.navigate(['/main-page']);
     }
+    userMenu() {
+        this.router.navigate(['/user-menu']);
+    }
     ngOnInit() {
         this.userPic = this.defaultUserPic;
     }
@@ -907,7 +952,7 @@ HeaderComponent.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_2__
     } if (rf & 2) {
         let _t;
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵloadQuery"]()) && (ctx.login = _t.first);
-    } }, decls: 11, vars: 1, consts: [[1, "header"], [1, "logo"], ["src", "assets/logo.png", "alt", "", 3, "click"], [1, "menu-button", "header-border", 3, "click"], [1, "header-border", "right"], ["alt", "user", 3, "src"], [4, "ngIf"], [1, "login-visibility-off"], ["loginPop", ""], [3, "openClose"]], template: function HeaderComponent_Template(rf, ctx) { if (rf & 1) {
+    } }, decls: 11, vars: 1, consts: [[1, "header"], [1, "logo"], ["src", "assets/logo.png", "alt", "", 3, "click"], [1, "menu-button", "header-border", 3, "click"], [1, "header-border", "right", 3, "click"], ["alt", "user", 3, "src"], [4, "ngIf"], [1, "login-visibility-off"], ["loginPop", ""], [3, "openClose"]], template: function HeaderComponent_Template(rf, ctx) { if (rf & 1) {
         const _r2 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵgetCurrentView"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "header", 0)(1, "div", 1)(2, "img", 2);
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵlistener"]("click", function HeaderComponent_Template_img_click_2_listener() { return ctx.logoHome(); });
@@ -917,6 +962,7 @@ HeaderComponent.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_2__
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](4, " Login ");
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](5, "div", 4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵlistener"]("click", function HeaderComponent_Template_div_click_5_listener() { return ctx.userMenu(); });
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](6, "img", 5);
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](7, HeaderComponent_div_7_Template, 1, 0, "div", 6);
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]()();
@@ -1032,6 +1078,7 @@ class LoginPopupComponent {
         this.router = router;
         this.loginServ = loginServ;
         this.fb = fb;
+        this.validCredentials = false;
         this.openClose = new _angular_core__WEBPACK_IMPORTED_MODULE_1__.EventEmitter();
         this.loginForm = this.fb.group({
             login: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__.FormControl('', {
@@ -1050,16 +1097,57 @@ class LoginPopupComponent {
         this.openClose.emit(true);
     }
     logInButton() {
-        if (this.loginServ.Users.filter((val) => val.email === this.loginForm.value.login &&
-            val.password === this.loginForm.value.pass).length !== 0) {
-            this.loginServ.loggedInUser = this.loginServ.Users.filter((val2) => val2.email === this.loginForm.value.login &&
-                val2.password === this.loginForm.value.pass)[0];
-            this.loginServ.loginFlag = true;
-            this.openClose.emit(true);
-        }
-        else {
-            alert(`Credentials incorrect!`);
-        }
+        this.loginServ
+            .getuser(this.loginForm.value.login, this.loginForm.value.pass)
+            .subscribe({
+            next: (res) => {
+                console.log(res);
+                if (res.users.length) {
+                    this.loginServ.loggedInUser = res.users[0];
+                    this.loginServ.loginFlag = true;
+                    this.openClose.emit(true);
+                    console.log(this.loginServ.loggedInUser);
+                    // localStorage.setItem(
+                    //   'loginData',
+                    //   JSON.stringify({
+                    //     login: this.loginServ.loggedInUser.email,
+                    //     password: this.loginServ.loggedInUser.password,
+                    //   })
+                    // );
+                    // console.log(
+                    //   'Data from localstorage',
+                    //   localStorage.getItem('login')
+                    // );
+                    localStorage.setItem('login', this.loginServ.loggedInUser.email);
+                    localStorage.setItem('password', this.loginServ.loggedInUser.password);
+                    console.log('Data from localstorage', localStorage.getItem('login'));
+                }
+                else {
+                    this.validCredentials = false;
+                    alert(`Credentials incorrect!`);
+                }
+            },
+        });
+        setTimeout(() => {
+            console.log('Status użytkownika:', this.validCredentials);
+        }, 1500);
+        // if (
+        //   this.loginServ.Users.filter(
+        //     (val) =>
+        //       val.email === this.loginForm.value.login &&
+        //       val.password === this.loginForm.value.pass
+        //   ).length !== 0
+        // ) {
+        //   this.loginServ.loggedInUser = this.loginServ.Users.filter(
+        //     (val2) =>
+        //       val2.email === this.loginForm.value.login &&
+        //       val2.password === this.loginForm.value.pass
+        //   )[0];
+        //   this.loginServ.loginFlag = true;
+        //   this.openClose.emit(true);
+        // } else {
+        //   alert(`Credentials incorrect!`);
+        // }
     }
 }
 LoginPopupComponent.ɵfac = function LoginPopupComponent_Factory(t) { return new (t || LoginPopupComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_3__.Router), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](src_app_services_login_service__WEBPACK_IMPORTED_MODULE_0__.LoginService), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_angular_forms__WEBPACK_IMPORTED_MODULE_2__.FormBuilder)); };
@@ -1145,7 +1233,11 @@ class RegisterComponent {
                 password: formValues.password,
                 bookedFlights: [],
             };
-            this.regService.Users.push(UserData);
+            // this.regService.Users.push(UserData);
+            this.regService.userToMongo(UserData).subscribe({
+                next: (data) => console.log('Dane użytkownika do zapisu na serwerze: ', data),
+                error: (err) => console.log('Błąd zapisu usera: ', err),
+            });
             this.router.navigate(['/main-page']);
         }
     }
@@ -1291,6 +1383,253 @@ SeatSelectionComponent.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MOD
 
 /***/ }),
 
+/***/ 7991:
+/*!*************************************************************!*\
+  !*** ./src/app/components/user-menu/user-menu.component.ts ***!
+  \*************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "UserMenuComponent": () => (/* binding */ UserMenuComponent)
+/* harmony export */ });
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/forms */ 4006);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ 4650);
+/* harmony import */ var src_app_services_login_service__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! src/app/services/login.service */ 4120);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ 4793);
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/common */ 6895);
+/* harmony import */ var _pipes_duration_pipe__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../pipes/duration.pipe */ 8105);
+/* harmony import */ var _pipes_landingtimer_pipe__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../pipes/landingtimer.pipe */ 9902);
+
+
+
+
+
+
+
+
+function UserMenuComponent_ng_container_19_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementContainerStart"](0);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](1, " You have no booked flights right now. ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelement"](2, "br");
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](3, " Book any flight to see it on this card. ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementContainerEnd"]();
+} }
+function UserMenuComponent_ng_container_20_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementContainerStart"](0);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](1, "div")(2, "p");
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](4, "p");
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](5);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵpipe"](6, "date");
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](7, "p");
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](8);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵpipe"](9, "duration");
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](10);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵpipe"](11, "date");
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵpipe"](12, "landingtimer");
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](13, "div", 23);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](14);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵpipe"](15, "date");
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵpipe"](16, "currency");
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](17, "div", 24)(18, "div", 25)(19, "p")(20, "small");
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](21, "Operated by:");
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()();
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](22, "p");
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](23);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelement"](24, "img", 26);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](25, "div", 27)(26, "div", 28)(27, "p");
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](28);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](29, "p");
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](30);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵpipe"](31, "date");
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()();
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](32, "div")(33, "p");
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](34);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelement"](35, "img", 29);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](36, "p");
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](37);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵpipe"](38, "duration");
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()();
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](39, "div", 28)(40, "p");
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](41);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](42, "p");
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](43);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵpipe"](44, "date");
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵpipe"](45, "landingtimer");
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()()()()();
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelement"](46, "br");
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementContainerEnd"]();
+} if (rf & 2) {
+    const item_r9 = ctx.$implicit;
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate2"](" Flight from ", item_r9.flight.origin.city, " to ", item_r9.flight.destination.city, " ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate1"]("Take-off: ", _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵpipeBind2"](6, 17, item_r9.flight.date, "dd.MM.yy hh:mm"), "");
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate1"](" Flight duration: ", _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵpipeBind1"](9, 20, item_r9.flight.durationM), " ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate1"](" ", _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵpipeBind1"](11, 22, _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵpipeBind2"](12, 24, item_r9.flight.date, item_r9.flight.durationM)), " ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](4);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate2"](" ", _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵpipeBind2"](15, 27, item_r9.flight.date, "shortDate"), " ", _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵpipeBind2"](16, 30, item_r9.flight.flightPrice, "USD"), " ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](9);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate"](item_r9.flight.company.name);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("src", item_r9.flight.company.logo, _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵsanitizeUrl"]);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](4);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate2"](" ", item_r9.flight.origin.city, ", ", item_r9.flight.origin.country, " ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate1"](" ", _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵpipeBind2"](31, 33, item_r9.flight.date, "shortTime"), " ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](4);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate"](item_r9.flight.flightNumber);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵpipeBind1"](38, 36, item_r9.flight.durationM));
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](4);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate2"](" ", item_r9.flight.destination.city, ", ", item_r9.flight.destination.country, " ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate1"](" ", _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵpipeBind2"](44, 38, _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵpipeBind2"](45, 41, item_r9.flight.date, item_r9.flight.durationM), "shortTime"), " ");
+} }
+class UserMenuComponent {
+    constructor(loginService, router, fb) {
+        this.loginService = loginService;
+        this.router = router;
+        this.fb = fb;
+        this.loadedUser = {};
+        this.passwordChangeForm = this.fb.group({
+            oldPass: new _angular_forms__WEBPACK_IMPORTED_MODULE_4__.FormControl('', {
+                validators: [_angular_forms__WEBPACK_IMPORTED_MODULE_4__.Validators.required],
+            }),
+            newPass: new _angular_forms__WEBPACK_IMPORTED_MODULE_4__.FormControl('', {
+                validators: [_angular_forms__WEBPACK_IMPORTED_MODULE_4__.Validators.required, _angular_forms__WEBPACK_IMPORTED_MODULE_4__.Validators.minLength(6)],
+            }),
+            passCheck: new _angular_forms__WEBPACK_IMPORTED_MODULE_4__.FormControl('', {
+                validators: [_angular_forms__WEBPACK_IMPORTED_MODULE_4__.Validators.required, _angular_forms__WEBPACK_IMPORTED_MODULE_4__.Validators.minLength(6)],
+            }),
+        });
+    }
+    ngOnInit() {
+        this.loadedUser = this.loginService.loggedInUser;
+    }
+    toogleSize(target) {
+        target.classList.toggle('short');
+    }
+    passwordChange(oldPass, newPass, passcheck) {
+        if (oldPass === this.loginService.loggedInUser.password) {
+            if (newPass === passcheck) {
+                this.loginService.loggedInUser.password = newPass;
+                this.loginService
+                    .passUpdate(this.loginService.loggedInUser)
+                    .subscribe();
+                console.log('Pass update attempt ', newPass);
+            }
+            else {
+                console.log('New pass not match pass check');
+            }
+        }
+        else {
+            console.log('Old pass incorrect');
+        }
+    }
+    logOutUser() {
+        this.loginService.loggedInUser = {};
+        this.loginService.loginFlag = false;
+        localStorage.removeItem('login');
+        localStorage.removeItem('password');
+        console.log(localStorage.getItem('login'));
+        this.router.navigate(['/main-page']);
+    }
+}
+UserMenuComponent.ɵfac = function UserMenuComponent_Factory(t) { return new (t || UserMenuComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdirectiveInject"](src_app_services_login_service__WEBPACK_IMPORTED_MODULE_0__.LoginService), _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_5__.Router), _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdirectiveInject"](_angular_forms__WEBPACK_IMPORTED_MODULE_4__.FormBuilder)); };
+UserMenuComponent.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdefineComponent"]({ type: UserMenuComponent, selectors: [["app-user-menu"]], decls: 54, vars: 7, consts: [[1, "user-page-wrapper"], [1, "user-data"], [1, "personal-data", "border", "short", 3, "click"], ["personalData", ""], [1, "flights", "border", "short", 3, "click"], ["flights", ""], [4, "ngIf"], [4, "ngFor", "ngForOf"], ["logout", ""], [1, "small-button", 3, "click"], [1, "personal-data", "border", "short"], ["passchange", ""], [3, "click"], ["action", "", 3, "formGroup"], ["for", "oldpass"], ["type", "text", "formControlName", "oldPass"], ["oldPass", ""], ["for", "newpass"], ["type", "text", "formControlName", "newPass"], ["newPass", ""], ["for", "passcheck"], ["type", "text", "formControlName", "passCheck"], ["passCheck", ""], [1, "result-head"], ["t", "", 1, "result"], [1, "vertical-center", "result-left"], ["alt", "", 2, "height", "40px", 3, "src"], [1, "result-flightdata"], [1, "vertical-center"], ["src", "assets/plane-icon.jpg", "onerror", "", "alt", "", 2, "height", "30px"]], template: function UserMenuComponent_Template(rf, ctx) { if (rf & 1) {
+        const _r11 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵgetCurrentView"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "div", 0)(1, "div", 1)(2, "h2");
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](3, " Hello ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](4, "span");
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](5);
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](6, "! ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](7, "div", 2, 3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵlistener"]("click", function UserMenuComponent_Template_div_click_7_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r11); const _r0 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵreference"](8); return _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵresetView"](ctx.toogleSize(_r0)); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](9, "h3");
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](10, "Personal data");
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](11, "p");
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](12);
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](13, "p");
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](14);
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()();
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](15, "div", 4, 5);
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵlistener"]("click", function UserMenuComponent_Template_div_click_15_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r11); const _r1 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵreference"](16); return _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵresetView"](ctx.toogleSize(_r1)); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](17, "h3");
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](18, "Booked Flights");
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](19, UserMenuComponent_ng_container_19_Template, 4, 0, "ng-container", 6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](20, UserMenuComponent_ng_container_20_Template, 47, 44, "ng-container", 7);
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](21, "div", 2, 8);
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵlistener"]("click", function UserMenuComponent_Template_div_click_21_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r11); const _r4 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵreference"](22); return _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵresetView"](ctx.toogleSize(_r4)); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](23, "h3");
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](24, "Log out");
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelement"](25, "br");
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](26, "p")(27, "button", 9);
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵlistener"]("click", function UserMenuComponent_Template_button_click_27_listener() { return ctx.logOutUser(); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](28, " Log out current user ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()()();
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](29, "div", 10, 11)(31, "h3", 12);
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵlistener"]("click", function UserMenuComponent_Template_h3_click_31_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r11); const _r5 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵreference"](30); return _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵresetView"](ctx.toogleSize(_r5)); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](32, "Change password");
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelement"](33, "br");
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](34, "form", 13)(35, "p")(36, "label", 14);
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](37, "Current password: ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelement"](38, "input", 15, 16);
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](40, "p")(41, "label", 17);
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](42, "New Password: ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelement"](43, "input", 18, 19);
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](45, "p")(46, "label", 20);
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](47, "New password check: ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelement"](48, "input", 21, 22);
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()();
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelement"](50, "br");
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](51, "p")(52, "button", 9);
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵlistener"]("click", function UserMenuComponent_Template_button_click_52_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r11); const _r6 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵreference"](39); const _r7 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵreference"](44); const _r8 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵreference"](49); return _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵresetView"](ctx.passwordChange(_r6.value, _r7.value, _r8.value)); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](53, " Change password ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()()()()();
+    } if (rf & 2) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](5);
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate"](ctx.loginService.loggedInUser.name);
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](7);
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate2"](" Name: ", ctx.loginService.loggedInUser.name, " ", ctx.loginService.loggedInUser.surname, " ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate1"]("E-mail: ", ctx.loginService.loggedInUser.email, "");
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](5);
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("ngIf", ctx.loginService.loggedInUser.bookedFlights.length === 0);
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("ngForOf", ctx.loadedUser.bookedFlights);
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](14);
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("formGroup", ctx.passwordChangeForm);
+    } }, dependencies: [_angular_common__WEBPACK_IMPORTED_MODULE_6__.NgForOf, _angular_common__WEBPACK_IMPORTED_MODULE_6__.NgIf, _angular_forms__WEBPACK_IMPORTED_MODULE_4__["ɵNgNoValidate"], _angular_forms__WEBPACK_IMPORTED_MODULE_4__.DefaultValueAccessor, _angular_forms__WEBPACK_IMPORTED_MODULE_4__.NgControlStatus, _angular_forms__WEBPACK_IMPORTED_MODULE_4__.NgControlStatusGroup, _angular_forms__WEBPACK_IMPORTED_MODULE_4__.FormGroupDirective, _angular_forms__WEBPACK_IMPORTED_MODULE_4__.FormControlName, _angular_common__WEBPACK_IMPORTED_MODULE_6__.CurrencyPipe, _angular_common__WEBPACK_IMPORTED_MODULE_6__.DatePipe, _pipes_duration_pipe__WEBPACK_IMPORTED_MODULE_1__.DurationPipe, _pipes_landingtimer_pipe__WEBPACK_IMPORTED_MODULE_2__.LandingtimerPipe], styles: ["*[_ngcontent-%COMP%] {\n  box-sizing: border-box;\n}\n\n.border[_ngcontent-%COMP%] {\n  border: 2px blue solid;\n  border-radius: 5px;\n  border-bottom-left-radius: 10px;\n  border-top-right-radius: 10px;\n}\n\n.user-page-wrapper[_ngcontent-%COMP%] {\n  width: -moz-fit-content;\n  width: fit-content;\n  margin: 10px auto;\n  padding: 5px;\n  gap: 10px;\n}\n\n.user-data[_ngcontent-%COMP%] {\n  width: 100%;\n  padding: 5px;\n  display: flex;\n  flex-direction: column;\n  gap: 10px;\n}\n\n.personal-data[_ngcontent-%COMP%] {\n  padding: 10px;\n  overflow: hidden;\n  height: -moz-fit-content;\n  height: fit-content;\n  transition: all 1s ease-out;\n  text-align: center;\n}\n\n.flights[_ngcontent-%COMP%] {\n  padding: 10px;\n  overflow: hidden;\n  height: -moz-fit-content;\n  height: fit-content;\n  transition: all 1s ease-out;\n}\n\nh2[_ngcontent-%COMP%] {\n  text-align: center;\n  margin: 15px;\n}\n\nh3[_ngcontent-%COMP%] {\n  text-align: center;\n  margin: 0 auto 5px auto;\n}\n\n.short[_ngcontent-%COMP%] {\n  height: 2.5rem;\n  transition: all 1s ease-out;\n}\n\n.small-button[_ngcontent-%COMP%] {\n  width: -moz-fit-content;\n  width: fit-content;\n  height: 2.5rem;\n  text-align: center;\n  font-size: 1rem;\n  background-color: rgb(0, 0, 153);\n  border-top-right-radius: 10px;\n  border-bottom-left-radius: 10px;\n  box-shadow: 2px -2px 2px 2px rgb(96, 119, 148), 0 0 4px 4px rgb(228, 233, 236);\n  color: white;\n}\n\n.small-button[_ngcontent-%COMP%]:hover {\n  cursor: pointer;\n  font-size: 1.2rem;\n  background-color: rgb(128, 85, 245);\n  box-shadow: 3px -3px 3px 3px rgb(92, 123, 163), 0 0 6px 6px rgb(228, 233, 236);\n  overflow: visible;\n}\n\n.result[_ngcontent-%COMP%] {\n  border: 2px blue solid;\n  margin: 10px auto;\n  padding: 5px;\n  border-radius: 5px;\n  display: flex;\n  column-gap: 5px;\n  flex-wrap: wrap;\n}\n\n.result-head[_ngcontent-%COMP%] {\n  text-align: center;\n  font-weight: 700;\n}\n\n.results[_ngcontent-%COMP%] {\n  width: 100%;\n  padding: 0 10px;\n  margin: 0 auto;\n  margin-bottom: 100px;\n}\n\n.result-left[_ngcontent-%COMP%] {\n  width: 19%;\n}\n\n.result-left[_ngcontent-%COMP%]   p[_ngcontent-%COMP%] {\n  text-align: center;\n}\n\n.result-flightdata[_ngcontent-%COMP%] {\n  text-align: center;\n  column-gap: 1%;\n  display: flex;\n  justify-content: space-between;\n  width: 79%;\n}\n\n.result-container[_ngcontent-%COMP%] {\n  overflow: hidden;\n}\n\n.vertical-center[_ngcontent-%COMP%] {\n  align-items: center;\n  display: flex;\n  justify-content: center;\n  flex-direction: column;\n}"] });
+
+
+/***/ }),
+
 /***/ 8105:
 /*!****************************************!*\
   !*** ./src/app/pipes/duration.pipe.ts ***!
@@ -1329,7 +1668,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ 4650);
 
 class LandingtimerPipe {
-    transform(value, duration) {
+    transform(value, duration, ...args) {
         value.setMinutes(value.getMinutes() + duration);
         return value;
     }
@@ -1360,7 +1699,6 @@ class BookingService {
     constructor(http) {
         this.http = http;
         this.airportsList = src_assets_airports__WEBPACK_IMPORTED_MODULE_0__.airports.map((airport, index) => airport.city);
-        // flightsList: Flight[] = flights;
         this.flightsList = [];
         this.bookingQuery = {
             origin: '',
@@ -1487,10 +1825,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "LoginService": () => (/* binding */ LoginService)
 /* harmony export */ });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ 4650);
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/common/http */ 529);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ 4650);
+
+
 
 class LoginService {
-    constructor() {
+    constructor(http) {
+        this.http = http;
         this.Users = [
             {
                 name: 'admin',
@@ -1500,6 +1842,7 @@ class LoginService {
                 bookedFlights: [],
             },
         ];
+        this.server = 'http://flightbookingbk.eu-4.evennode.com:27002/';
         this.loginFlag = false;
         this.loggedInUser = {
             name: '',
@@ -1509,9 +1852,28 @@ class LoginService {
             bookedFlights: [],
         };
     }
+    userToMongo(body) {
+        const server = this.server + 'setuser';
+        return this.http.post(server, body);
+    }
+    getuser(email, pass) {
+        const server = this.server + 'getusers';
+        const params = new _angular_common_http__WEBPACK_IMPORTED_MODULE_0__.HttpParams().set('login', email).set('password', pass);
+        return this.http.get(server, {
+            params,
+        });
+    }
+    pushFlight(user) {
+        const server = this.server + 'pushflight';
+        return this.http.put(server, user);
+    }
+    passUpdate(user) {
+        const server = this.server + 'passupdate';
+        return this.http.put(server, user);
+    }
 }
-LoginService.ɵfac = function LoginService_Factory(t) { return new (t || LoginService)(); };
-LoginService.ɵprov = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"]({ token: LoginService, factory: LoginService.ɵfac, providedIn: 'root' });
+LoginService.ɵfac = function LoginService_Factory(t) { return new (t || LoginService)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_0__.HttpClient)); };
+LoginService.ɵprov = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjectable"]({ token: LoginService, factory: LoginService.ɵfac, providedIn: 'root' });
 
 
 /***/ }),

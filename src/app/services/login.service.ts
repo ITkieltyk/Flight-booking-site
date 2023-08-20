@@ -19,6 +19,7 @@ export class LoginService {
       bookedFlights: [],
     },
   ];
+  server: string = 'http://flightbookingbk.eu-4.evennode.com:27002/';
   loginFlag: boolean = false;
   loggedInUser: Person = {
     name: '',
@@ -29,24 +30,24 @@ export class LoginService {
   };
 
   userToMongo(body: Person) {
-    const server = 'http://localhost:27002/setuser';
+    const server = this.server + 'setuser';
 
     return this.http.post(server, body);
   }
   getuser(email: string, pass: string) {
-    const server = 'http://localhost:27002/getusers';
+    const server = this.server + 'getusers';
     const params = new HttpParams().set('login', email).set('password', pass);
     return this.http.get<DBUser>(server, {
       params,
     });
   }
   pushFlight(user: Person) {
-    const server = 'http://localhost:27002/pushflight';
+    const server = this.server + 'pushflight';
 
     return this.http.put<DBUser>(server, user);
   }
   passUpdate(user: Person) {
-    const server = 'http://localhost:27002/passupdate';
+    const server = this.server + 'passupdate';
 
     return this.http.put(server, user);
   }
